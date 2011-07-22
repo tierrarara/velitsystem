@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations xmlns="http://agavi.org/agavi/config/parts/autoload/1.0" xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0">
+	
+	<ae:configuration>
+		
+		<autoload name="AppAuthBaseAction">%core.module_dir%/Auth/lib/action/AppAuthBaseAction.class.php</autoload>
+		<autoload name="AppAuthBaseModel">%core.module_dir%/Auth/lib/model/AppAuthBaseModel.class.php</autoload>
+		<autoload name="AppAuthBaseView">%core.module_dir%/Auth/lib/view/AppAuthBaseView.class.php</autoload>
+		
+	</ae:configuration>
+	
+</ae:configurations>
