@@ -41,7 +41,7 @@
 			<setting name="available">true</setting>
 			<setting name="debug">false</setting>
 			
-			<setting name="use_database">false</setting>
+			<setting name="use_database">true</setting>
 			<setting name="use_logging">false</setting>
 			<setting name="use_security">true</setting>
 			<setting name="use_translation">false</setting>
@@ -58,13 +58,18 @@
 		
 	</ae:configuration>
 	
-	<ae:configuration environment="development.*">
+	<ae:configuration environment="development*">
 		<settings>
-			<setting name="debug">true</setting>
+			<setting name="debug">false</setting>
 		</settings>
 	</ae:configuration>
 	
-	<ae:configuration environment="production.*">
+	<ae:configuration environment="production*">
+	
+		<settings>
+			<setting name="debug">false</setting>
+		</settings>
+		
 		<exception_templates>
 			<!-- a different exception template for production -->
 			<!-- it really doesn't do much -->
