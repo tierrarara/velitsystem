@@ -3,11 +3,13 @@
 // +---------------------------------------------------------------------------+
 // | An absolute filesystem path to the agavi/agavi.php script.                |
 // +---------------------------------------------------------------------------+
-require('/usr/local/zend/share/pear/agavi/agavi.php');
+//require('/usr/local/zend/share/pear/agavi/agavi.php');
+// TODO: crear una archivo para configurar el sistema
 
 // +---------------------------------------------------------------------------+
 // | An absolute filesystem path to our app/config.php script.                 |
 // +---------------------------------------------------------------------------+
+// TODO: dejar aqui solo la configuracion de la aplicación
 require('../app/config.php');
 
 // +---------------------------------------------------------------------------+
