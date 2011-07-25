@@ -7,6 +7,9 @@
 		<autoload name="AppBaseModel">%core.lib_dir%/model/AppBaseModel.class.php</autoload>
 		<autoload name="AppBaseView">%core.lib_dir%/view/AppBaseView.class.php</autoload>
 		
+		<!-- Manager Conexion Base de datos Agavi y Zend -->
+		<autoload name="AgaviZendManager">agavi/database/AgaviZendManager.class.php</autoload>
+		
 	</ae:configuration>
 	
 </ae:configurations>
