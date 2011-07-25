@@ -1,6 +1,24 @@
 <?php
 
 // +---------------------------------------------------------------------------+
+// | Velit Include Path
+// +---------------------------------------------------------------------------+
+
+set_include_path(join(PATH_SEPARATOR, array(
+	get_include_path(),
+	'/home/rguerrero/projects/Libs/PHP',
+	'../../common' // tiene que existir alguna manera de que esto sea configurable
+
+)));
+
+// +---------------------------------------------------------------------------+
+// | Los archivos requeridos para configuracion                                |
+// +---------------------------------------------------------------------------+
+require_once 'Zend/Loader/Autoloader.php';
+require_once ('agavi/agavi.php');
+
+
+// +---------------------------------------------------------------------------+
 // | Should we run the system in debug mode? When this is on, there may be     |
 // | various side-effects. But for the time being it only deletes the cache    |
 // | upon start-up.                                                            |
