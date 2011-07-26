@@ -24,8 +24,22 @@ var TouchVelit = new Ext.Application({
 					 items: [{
 						 text: 'Nuevo contenido',
 						 handler: function () {
-							 Ext.getCmp('content').update('Nuevo Contenido');
-							 //Ext.Ajax.request({});
+							 //Ext.getCmp('content').update('Nuevo Contenido');
+							 
+							 Ext.getCmp('content').setLoading(true);
+							 
+							 Ext.Ajax.request({
+								 url: '/test.json',
+								 callback: function ( opts, success, response) {
+									 
+									 Ext.getCmp('content').setLoading(false);
+									 
+									 if(!success) { return;}
+									 
+									
+									 
+								 }
+							 });
 							 
 							 
 						 }
