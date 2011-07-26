@@ -6,8 +6,8 @@
 
 set_include_path(join(PATH_SEPARATOR, array(
 	get_include_path(),
-	'/home/rguerrero/projects/Libs/PHP',
-	'../../common' // tiene que existir alguna manera de que esto sea configurable
+	'/home/tierrarara/PHP/libs',
+	'/home/tierrarara/Documentos/projects/velitsystem/common' // tiene que existir alguna manera de que esto sea configurable
 
 )));
 
@@ -16,6 +16,15 @@ set_include_path(join(PATH_SEPARATOR, array(
 // +---------------------------------------------------------------------------+
 require_once 'Zend/Loader/Autoloader.php';
 require_once ('agavi/agavi.php');
+
+// +---------------------------------------------------------------------------+
+// | Autoload
+// +---------------------------------------------------------------------------+
+$autoloader = Zend_loader_Autoloader::getInstance ();
+
+$autoloader->registerNamespace ( 'Zend_' );
+
+$autoloader->pushAutoloader(array('Agavi', '__autoload'));
 
 
 // +---------------------------------------------------------------------------+
