@@ -16,6 +16,15 @@ class Test_IndexAction extends AppTestBaseAction
 	 */
 	public function getDefaultViewName()
 	{
+		// conectado a la base de datos. // colocar automatico
+		$this->getContext()->getDatabaseConnection();
+		
+		$table = new Zend_Db_Table('test_1');
+		
+		$rowset = $table->fetchAll();
+		
+		$this->setAttribute('lista', $rowset);
+		
 		return 'Success';
 	}
 }

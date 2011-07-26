@@ -6,7 +6,12 @@ class Test_IndexSuccessView extends AppTestBaseView
 	{
 		$this->setupHtml($rd);
 		
-		$this->setAttribute('_title', 'Index');
+		$this->setAttribute('_title', 'Text - Index');
+	}
+	
+	public function executeJson(AgaviRequestDataHolder $rd)
+	{
+		$this->setupHtml($rd);
 	}
 }
 
