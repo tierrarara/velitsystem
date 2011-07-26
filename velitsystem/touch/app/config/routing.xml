@@ -3,12 +3,18 @@
 	<ae:configuration>
 		<routes>
 			
-			<route name="output_json" pattern="JSON" source="_SERVER[HTTP_X_REQUEST]" output_type="json" stop="false" />
+			<route name="output_json" pattern=".json$" output_type="json" stop="false" />
 			<!-- or -->
 			<route name="output_ajax" pattern="XMLHttpRequest" source="_SERVER[HTTP_X_REQUESTED_WITH]" output_type="ajax" stop="false" />
 			
 			<!-- default action for "/" -->
 			<route name="index" pattern="^/$" module="%actions.default_module%" action="%actions.default_action%" />
+
+			<!-- test module -->			
+			<route name="test" pattern="^/test" module="Test">
+				<route name=".index" pattern="" action="Index" />
+			</route>
+			
 			
 			<!-- an example for a CRUD-style set of routes -->
 			<route name="products" pattern="^/products" module="Products">
