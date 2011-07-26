@@ -20,6 +20,7 @@
 			
 			<database name="pdo_pgsql_main" class="AgaviZendManager">
 				<!-- <ae:parameter name="dsn">postgres data sourc url</ae:parameter> -->
+				<ae:parameter name="adapter">pdo_pgsql</ae:parameter>
 				<ae:parameter name="database">velit_system</ae:parameter>
 				<ae:parameter name="username">velit</ae:parameter>
 				<ae:parameter name="password">1234567</ae:parameter>
