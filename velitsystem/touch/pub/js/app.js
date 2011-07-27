@@ -39,26 +39,47 @@ var TouchVelit = new Ext.Application({
 					 dock : 'top',
 					 xtype: 'toolbar',
 					 items: [{
-						 text: 'Nuevo contenido',
+						 text: 'Ajax con Json',
 						 handler: function () {
-							 // Ext.getCmp('content').update('Nuevo
-								// Contenido');
-							 
-							 Ext.getCmp('content').setLoading(false);
+							
+							 Ext.getCmp('content').setLoading(true);
 
 							 Ext.Ajax.request({
-								 url: '/test.json',
+								 url: '/test.json', // ver en routing.xml modulo y accion ejecutada
 								 method: 'GET',
-								 defaultHeaders: 'application/json',
 								 callback: function (o,s,r) {
 									 
+									 Ext.getCmp('content').setLoading(false);
+									
 									 if (!s) return; // hacer una funcion global para alerta de error 
+									
 									 var tpl = new Ext.XTemplate(
 									    '<tpl for="rows">',     // rows -> json response root
 									        '<p>{name} - <b>{phone}</b></p>',
 									    '</tpl>'
 									);
 									 tpl.overwrite(Ext.getCmp('content').body, Ext.decode(r.responseText));
+								 }
+							 });
+							 
+						 }
+						 
+					 },{
+						 text: 'Ajax Con respuesta HTML',
+						 handler: function () {
+							 Ext.getCmp('content').setLoading(true);
+							 
+							 Ext.Ajax.request({
+								 url: '/test', // ver en routing.xml modulo y accion ejecutada
+								 method: 'GET',
+								 callback: function (o,s,r) {
+									 
+									 Ext.getCmp('content').setLoading(false);
+									 
+									 if (!s) return; // hacer una funcion global para alerta de error
+									 
+									 Ext.getCmp('content').update(r.responseText);
+									 
 								 }
 							 });
 							 
