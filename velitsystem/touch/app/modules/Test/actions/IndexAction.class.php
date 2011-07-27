@@ -22,8 +22,8 @@ class Test_IndexAction extends AppTestBaseAction
 		$table = new Zend_Db_Table('test_1');
 		
 		$rowset = $table->fetchAll();
-		
-		$this->setAttribute('lista', $rowset);
+
+		$this->setAttribute('l', $rowset->toArray());
 		
 		return 'Success';
 	}
