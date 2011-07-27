@@ -1,4 +1,3 @@
 {
-	rows: <?php json_encode($t['lista']);?>
-
+	"rows": <?php echo $t['l'];?> 
 }
