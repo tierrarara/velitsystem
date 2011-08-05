@@ -6,7 +6,7 @@ class Desktop_IndexSuccessView extends AppDesktopBaseView
 	{
 		$this->setupHtml($rd);
 		
-		$this->setAttribute('_title', 'Index');
+		$this->setAttribute('_title', 'Index Action HTML');
 	}
 }
 

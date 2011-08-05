@@ -58,7 +58,7 @@ var TouchVelit = new Ext.Application({
 									        '<p>{name} - <b>{phone}</b></p>',
 									    '</tpl>'
 									);
-									 tpl.overwrite(Ext.getCmp('content').body, Ext.decode(r.responseText));
+									tpl.overwrite(Ext.getCmp('content').body, Ext.decode(r.responseText));
 								 }
 							 });
 							 
