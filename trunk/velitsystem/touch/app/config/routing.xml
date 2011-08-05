@@ -8,7 +8,7 @@
 			<route name="output_ajax" pattern="XMLHttpRequest" source="_SERVER[HTTP_X_REQUESTED_WITH]" output_type="ajax" stop="false" />
 			
 			<!-- default action for "/" -->
-			<route name="index" pattern="^/$" module="%actions.default_module%" action="%actions.default_action%" />
+			<route name="index" pattern="^/$" module="%actions.default_module%" action="%actions.default_action%" output_type="html" />
 
 			<!-- test module -->			
 			<route name="test" pattern="^/test" module="Test">
