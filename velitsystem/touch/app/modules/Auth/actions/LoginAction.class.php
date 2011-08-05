@@ -18,6 +18,14 @@ class Auth_LoginAction extends AppAuthBaseAction
 	{
 		return 'Success';
 	}
+	
+	public function executeRead() {
+		return 'Input';
+	}
+	
+	public function executeWrite() {
+		return 'Success';
+	}
 }
 
 ?>

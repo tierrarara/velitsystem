@@ -4,7 +4,7 @@ class Error_Error404SuccessView extends AppErrorBaseView
 {
 	public function executeHtml(AgaviRequestDataHolder $rd)
 	{
-		$this->setAttribute('_title', '404 Not Found');
+		$this->setAttribute('_title', '404 Not Found', 'simple');
 		
 		$this->setupHtml($rd);
 

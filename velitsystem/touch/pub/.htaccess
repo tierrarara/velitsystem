@@ -1,4 +1,4 @@
-DirectoryIndex index.php
+DirectoryIndex index.html index.php
 Options -MultiViews -Indexes +FollowSymLinks
 
 # For Apache2 without rewrites, so /index.php/foobar works.
