@@ -3,7 +3,7 @@
 	
 	<ae:configuration>
 		
-		<output_types default="html">
+		<output_types default="json">
 			
 			<output_type name="html">
 				
