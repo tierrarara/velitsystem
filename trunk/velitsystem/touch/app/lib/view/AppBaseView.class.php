@@ -8,6 +8,27 @@ class AppBaseView extends AgaviView
 	const SLOT_LAYOUT_NAME = 'slot';
 	
 	/**
+	 * Objeto que escribirá la respuesta en el template
+	 * 
+	 * @var Velit_Writter
+	 */
+	protected $_writter;
+	
+	public function initialize(AgaviExecutionContainer $container) {
+		parent::initialize($container);
+		
+		$outputType = $this->container->getOutputType()->getName();
+		
+		if (strtolower($outputType) == 'json'){
+			$this->_writter = new Velit_Writter_Json();
+		}
+		
+		$this->_writter = new Velit_Writter();
+		// pasar al template $t['_writter'];
+		$this->setAttributeByRef('_writter', $this->_writter);
+	}
+
+	/**
 	 * Handles output types that are not handled elsewhere in the view. The
 	 * default behavior is to simply throw an exception.
 	 *
@@ -47,7 +68,8 @@ class AppBaseView extends AgaviView
 		// now load the layout
 		// this method returns an array containing the parameters that were declared on the layout (not on a layer!) in output_types.xml
 		// you could use this, for instance, to automatically set a bunch of CSS or Javascript includes based on layout parameters -->
-		$this->loadLayout($layoutName);
+		$this->loadLayout($layoutName);	
+		
 	}
 }
 
