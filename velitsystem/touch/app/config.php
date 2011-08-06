@@ -24,6 +24,8 @@ $autoloader = Zend_loader_Autoloader::getInstance ();
 
 $autoloader->registerNamespace ( 'Zend_' );
 
+$autoloader->registerNamespace ( 'Velit_' );
+
 $autoloader->pushAutoloader(array('Agavi', '__autoload'));
 
 
