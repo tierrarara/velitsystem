@@ -10,7 +10,7 @@
 
 Ext.regController('Auth', {
 
-	authenticated: false;
+	authenticated: false,
 	
 	/**
 	 * check if is autenticated the current user

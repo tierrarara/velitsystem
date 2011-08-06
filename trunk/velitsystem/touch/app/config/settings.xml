@@ -6,7 +6,7 @@
 		<system_actions>
 			<system_action name="default">
 				<module>Desktop</module>
-				<action>Index</action>
+				<action>Init</action>
 			</system_action>
 			
 			<system_action name="error_404">
