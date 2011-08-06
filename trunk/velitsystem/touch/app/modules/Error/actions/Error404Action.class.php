@@ -15,7 +15,7 @@ class Error_Error404Action extends AppErrorBaseAction
 	 *                   </ul>
 	 */
 	public function getDefaultViewName()
-	{exit('ERROR');
+	{
 		return 'Success';
 	}
 }

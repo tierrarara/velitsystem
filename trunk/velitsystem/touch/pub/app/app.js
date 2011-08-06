@@ -111,8 +111,10 @@ App = new Ext.Application({
     				return;
     			}
     			
+    			console.debug(request);
+    			
     			// all resquest return json
-    			var response = Ext.decode(r.responseText);
+    			var response = Ext.decode(request.responseText);
     			
     			// aqui esta cual es la vista a mostrar
     			console.debug(response);

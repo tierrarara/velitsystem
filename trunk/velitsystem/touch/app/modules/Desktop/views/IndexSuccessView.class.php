@@ -1,12 +1,16 @@
 <?php
 
-class Desktop_IndexSuccessView extends AppDesktopBaseView
-{
-	public function executeHtml(AgaviRequestDataHolder $rd)
-	{
-		$this->setupHtml($rd);
+class Desktop_IndexSuccessView extends AppDesktopBaseView {
+	public function executeHtml(AgaviRequestDataHolder $rd) {
+		$this->setupHtml ( $rd );
 		
-		$this->setAttribute('_title', 'Index Action HTML');
+		$this->setAttribute ( '_title', 'Index Action HTML' );
+	}
+	
+	public function executeJson() {
+		$this->setupHtml ( $rd, 'html' );
+		Zend_Debug::dump($this);
+		exit;
 	}
 }
 

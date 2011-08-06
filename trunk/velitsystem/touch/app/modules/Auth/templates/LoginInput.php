@@ -1,1 +1,1 @@
-login input file
+<?php echo $t['_writter']?>

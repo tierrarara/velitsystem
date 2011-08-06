@@ -1,8 +1,8 @@
 /**
  * @category Touch Velit
  * @author Rafael Guerrero <tierrarara@gmail.com>
- * @package View
- * @subpackage Viewport
+ * @package App
+ * @subpackage View
  * @copyright  Velit System
  * @license  
  * @version $Id$
