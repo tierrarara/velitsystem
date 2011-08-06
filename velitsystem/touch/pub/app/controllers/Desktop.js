@@ -12,7 +12,7 @@ Ext.regController('Desktop', {
 	
 	index: function () {
 		
-		App.rq('');
+		App.rq('/Desktop/Index');
 		
 		
 	}
