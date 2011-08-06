@@ -84,6 +84,7 @@
 						<ae:parameter name="default_extension">.php</ae:parameter>
 						<!-- this changes the name of the variable with all template attributes from the default $template to $t -->
 						<ae:parameter name="var_name">t</ae:parameter>
+						<!-- <ae:parameter name="extension">.js</ae:parameter> -->
 					</renderer>
 				</renderers>
 				
