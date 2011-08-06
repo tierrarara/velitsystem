@@ -10,6 +10,13 @@
 			<!-- default action for "/" -->
 			<route name="index" pattern="^/$" module="%actions.default_module%" action="%actions.default_action%" output_type="html" />
 
+
+			<!-- Desktop -->
+			<route name="desktop" pattern="^/Desktop" module="Desktop">
+				<route name=".index" pattern="(Index)?" action="Index" />
+			</route>
+
+
 			<!-- test module -->			
 			<route name="test" pattern="^/test" module="Test">
 				<route name=".index" pattern="" action="Index" />
