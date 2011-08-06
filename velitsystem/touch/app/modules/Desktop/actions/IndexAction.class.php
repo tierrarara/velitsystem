@@ -3,7 +3,7 @@
 class Desktop_IndexAction extends AppDesktopBaseAction {
 	
 	public function isSecure() {
-		return true;
+		return false;
 	}
 	
 	/**

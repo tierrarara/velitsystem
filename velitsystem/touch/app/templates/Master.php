@@ -18,6 +18,12 @@
 		
 		<!-- Views -->
 		<script src="<?php echo $ro->getBaseHref() ?>app/views/Viewport.js" type="text/javascript"></script>
+		
+		<!-- Controllers -->
+		<script src="app/controllers/Auth.js" type="text/javascript"></script>
+		
+		
+		
 	</head>
 	<body>
 	</body>

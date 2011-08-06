@@ -45,7 +45,7 @@ var TouchVelit = new Ext.Application({
 							 Ext.getCmp('content').setLoading(true);
 
 							 Ext.Ajax.request({
-								 url: '/test.json', // ver en routing.xml modulo y accion ejecutada
+								 url: 'test.json', // ver en routing.xml modulo y accion ejecutada
 								 method: 'GET',
 								 callback: function (o,s,r) {
 									 
@@ -70,7 +70,7 @@ var TouchVelit = new Ext.Application({
 							 Ext.getCmp('content').setLoading(true);
 							 
 							 Ext.Ajax.request({
-								 url: '/test', // ver en routing.xml modulo y accion ejecutada
+								 url: 'test', // ver en routing.xml modulo y accion ejecutada
 								 method: 'GET',
 								 callback: function (o,s,r) {
 									 
