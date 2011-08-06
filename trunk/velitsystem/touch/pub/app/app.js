@@ -26,12 +26,19 @@ App = new Ext.Application({
     	
     	
     	// is atutenticated 
-    	
+    	 Ext.dispatch({
+             controller: 'Auth',
+             action    : 'showForm'
+         });
     	
     },
     // este evento es llamado una vez es cargado el Viewport
     // cambiar, primero cargar configuracion luego cargar viewport
     loadSetup: function () {
     	console.debug();
-    }
+    },
+    
+    
+    
+    
 });
