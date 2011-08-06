@@ -21,6 +21,7 @@
 		
 		<!-- Controllers -->
 		<script src="app/controllers/Auth.js" type="text/javascript"></script>
+		<script src="app/controllers/Desktop.js" type="text/javascript"></script>
 		
 		
 		
