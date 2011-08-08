@@ -8,9 +8,7 @@ class Desktop_IndexSuccessView extends AppDesktopBaseView {
 	}
 	
 	public function executeJson() {
-		$this->setupHtml ( $rd, 'html' );
-		Zend_Debug::dump($this);
-		exit;
+		$this->setupHtml ( $rd );
 	}
 }
 
