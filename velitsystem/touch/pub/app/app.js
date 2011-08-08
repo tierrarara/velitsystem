@@ -2,7 +2,6 @@
  * @category  Touch Velit
  * @author Rafael Guerrero <tierrarara@gmail.com>
  * @package App
- * @subpackage 
  * @copyright  Velit System
  * @license  
  * @version $Id$
@@ -24,7 +23,7 @@ App = new Ext.Application({
     
     init : function () {
     	// show main panel - Main Container
-    	 this.vp = new this.views.Viewport(); // asegurando solo un Viewport
+    	 this.vp = new App.views.Viewport(); // asegurando solo un Viewport
 
     	 // TODO: load config
 
@@ -54,10 +53,11 @@ App = new Ext.Application({
      * 
      * 
      */
-    rq: function (url) {
+    rq: function (url, method) {
     	// cargando Config object
     	url = url.replace(/^(\/)/, '');
     	
+    	if (!method) method = 'GET'; 
     	
     	// TODO: definir un objeto ajax global
     	var _rq = new Ext.data.Connection({
@@ -65,12 +65,14 @@ App = new Ext.Application({
     	    	beforerequest: {
     	            fn: function(con, opt){
     	            	App.vp.setLoading(true);
+    	            	console.debug('beforerequest  - URL: "' + opt.url+ '"');
     	            },
     	            scope: this
     	        },
     	        requestcomplete: {
     	            fn: function(con, res, opt){
     	            	App.vp.setLoading(false);
+    	            	console.debug('requestcomplete  - URL: "' + opt.url+ '"');
     	            },
     	            scope: this
     	        },
@@ -89,43 +91,85 @@ App = new Ext.Application({
     	_rq.request({
     		url: this.baseUrl + url,
     		method: 'GET',
+
     		success: function (request,opts) {
+
     			console.debug('ajax - success');
    
     		},
     		
     		failure: function (p1,p2,p3) {
     			console.debug('ajax - failure');
-    			console.debug(p1);
-    			console.debug(p2);
-    			console.debug(p3);
     		},
     		
     		callback: function (opts,success,request) {
+    			console.debug('ajax - callback ');
     			
     			if (!success) {
-    				Ext.Msg.confirm('Warning', '¿Intentar Nuevamente?', function (btn,value,opt) {
+    				Ext.Msg.confirm('Warning', 'Try Again?', function (btn,value,opt) {
     					if (btn == 'yes') App.rq(opts.url);
     				});
     				
     				return;
     			}
     			
-    			console.debug(request);
-    			
-    			// all resquest return json
-    			var response = Ext.decode(request.responseText);
-    			
-    			// aqui esta cual es la vista a mostrar
-    			console.debug(response);
-    			
+    			try { 
+    				// 	all resquest return json
+    				var response = Ext.decode(request.responseText);
+
+    				if (response.dispatch && response.dispatch.controller) {
+	   					 Ext.dispatch({
+	   				            controller: response.dispatch.controller,
+	   				            action: response.dispatch.action
+	   				    });
+	   					
+	   				}else if (response.view && response.view.length > 0) {
+    					
+    					var v = new App.views[response.view]();
+    					
+    					App.vp.items.add(v);
+    					App.vp.setActiveItem(v);
+//    					var direction = (target === 'usersList') ? 'right' : 'left';
+//    			        this.setActiveItem(
+//    			            App.views[target],
+//    			            { type: 'slide', direction: direction }
+//    			        );	
+    				}else {
+    					throw "Respuesta Inadecuada del Servidor";
+    				}
+
+    				
+
+    			} catch (ex) {
+    				
+    				console.debug(ex);
+    				
+    				App.handleError();
+    			}
     			
     		}
     	});
     	
+    },
+    
+    /**
+     * Funciona generica para notificar al usuario que ha ocurrido un error
+     * de una forma "amigable"
+     */
+    handleError: function () {
+    	// TODO: definnir parametros para manejar diferentes tipos de problemas
+    	Ext.dispatch({
+            controller: 'Error',
+            action    : 'handle'
+        }); // dispatch default screen
     }
     
     
     
     
+});
+
+
+Ext.Router.draw(function(map) {
+    map.connect(':controller/:action');
 });
