@@ -14,8 +14,13 @@ class Auth_LoginInputView extends AppAuthBaseView {
 		
 		$this->setAttribute ( '_title', 'Login' );
 		
-		$this->_writter->view = strtolower($this->getContainer()->getModuleName()) .  ucfirst($this->getContainer()->getActionName());
+		$this->_writter->dispatch = array(
+			'controller' => 'Auth',
+			'action' => 'form'
+		);
 		
+		//$this->_writter->view = strtolower($this->getContainer()->getModuleName()) .  ucfirst($this->getContainer()->getActionName());
+
 	}
 	
 }
