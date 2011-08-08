@@ -24,10 +24,23 @@ class Velit_Writter {
 	
 	/**
 	 * 
-	 * Nombre de la vista a mostrar
+	 * Controlador a ejecutar en el mvc de sencha-touch
+	 * 
+	 * array(
+	 * 	controller => controllerName, 
+	 * 	action => actionName, param1 => 
+	 * 	param1,...)
+	 * 
+	 * @var array
+	 */
+	public $dispatch = array();
+	
+	/**
+	 * 
+	 * Nombre de la vista a mostrar, una vista simple
 	 * @var string
 	 */
-	public $view = 'desktopDasboard';
+	public $view = '';
 	
 	/**
 	 * 
