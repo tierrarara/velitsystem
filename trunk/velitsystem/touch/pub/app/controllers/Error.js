@@ -5,16 +5,17 @@
  * @subpackage Controller
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
- * @version    $Id: Auth.js 48 2011-08-06 01:29:10Z johand22@gmail.com $
+ * @version    $Id$
  */
 
-Ext.regController('Desktop', {
+Ext.regController('Error', {
 	
-	index: function () {
-		
-		App.rq('/Desktop/Index');
-		
-		
-	}
+	handle: function () {
+		Ext.Msg.alert('Unexpected Behavior', 'Intente Iniciar la aplicación nuevamente', Ext.emptyFn);
+	},
+	
+	exception: Ext.emptyFn,
+	
+	userError: Ext.emptyFn
 	
 });
