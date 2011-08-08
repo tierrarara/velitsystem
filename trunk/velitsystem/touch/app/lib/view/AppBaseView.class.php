@@ -21,9 +21,10 @@ class AppBaseView extends AgaviView
 		
 		if (strtolower($outputType) == 'json'){
 			$this->_writter = new Velit_Writter_Json();
+		}else {
+			$this->_writter = new Velit_Writter();
 		}
 		
-		$this->_writter = new Velit_Writter();
 		// pasar al template $t['_writter'];
 		$this->setAttributeByRef('_writter', $this->_writter);
 	}
