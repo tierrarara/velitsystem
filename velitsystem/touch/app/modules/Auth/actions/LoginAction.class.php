@@ -16,15 +16,28 @@ class Auth_LoginAction extends AppAuthBaseAction
 	 */
 	public function getDefaultViewName()
 	{
-		return 'Success';
-	}
-	
-	public function executeRead() {
 		return 'Input';
 	}
 	
-	public function executeWrite() {
+	public function executeRead(AgaviRequestDataHolder $rd) {
+		return 'Input';
+	}
+	
+	public function executeWrite(AgaviRequestDataHolder $rd) {
+		
+		// buscar usuario en la bd
+		
+		$this->getContext()->getUser()->setAutentecated(true);
+		
+		
 		return 'Success';
+	}
+	
+	public function validateWrite (AgaviRequestDataHolder $rd) {
+		// validando la data
+		
+		
+		return true;
 	}
 }
 
