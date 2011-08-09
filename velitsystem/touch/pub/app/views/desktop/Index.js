@@ -12,14 +12,19 @@ App.views.DesktopIndex = Ext.extend(Ext.Panel, {
 
     initComponent: function() {
         Ext.apply(this, {
-            id: 'desktopindex',
-            html: 'bienvenido a velit touch',
-            dockedItem: [{
+            id: 'DesktopIndex',
+            html: 'bienvenido a touch.velitsystem.com',
+            dockedItems: [{
             	xtype: 'toolbar',
             	title: 'titulo del panel "desktopindex"',
             	items: [{
-            		text: 'logout',
-            		handler: Ext.emptyFn
+            		text: 'Logout',
+            		handler: function (evt) {
+            			Ext.dispatch({
+            				controller: 'Auth',
+            	            action    : 'logOut'
+            			});
+            		}
             	}]
             }]
         });
