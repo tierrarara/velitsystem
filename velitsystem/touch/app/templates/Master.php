@@ -39,5 +39,8 @@
 		
 	</head>
 	<body>
+	
+<!--	<div id="app-loading" style="margin: 50px auto 0 auto; background-position: center; background-repeat: no-repeat; height: 50px;" class="icon-loading"> Loading ...</div>-->
+	
 	</body>
 </html>

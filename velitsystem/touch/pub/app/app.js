@@ -1,10 +1,10 @@
 /**
- * @category  Touch Velit
- * @author Rafael Guerrero <tierrarara@gmail.com>
- * @package App
- * @copyright  Velit System
- * @license  
- * @version $Id$
+ * @category   Touch Velit
+ * @author     Rafael Guerrero <tierrarara@gmail.com>
+ * @package    App
+ * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
+ * @license    http://www.velitsystem.com/licence 
+ * @version    $Id$
  */
 
 App = new Ext.Application({
@@ -31,7 +31,7 @@ App = new Ext.Application({
              controller: 'Desktop',
              action    : 'index'
          }); // dispatch default screen
-
+ 
     },
     // este evento es llamado una vez es cargado el Viewport
     // cambiar, primero cargar configuracion luego cargar viewport
