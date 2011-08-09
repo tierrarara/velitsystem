@@ -10,8 +10,13 @@
 
 Ext.regController('Error', {
 	
-	handle: function () {
-		Ext.Msg.alert('Unexpected Behavior', 'Intente Iniciar la aplicación nuevamente', Ext.emptyFn);
+	handle: function (params) {
+
+		if(params.exception) {
+			Ext.Msg.alert('Unexpected Behavior', params.exception, Ext.emptyFn);
+		}else {
+			Ext.Msg.alert('Unexpected Behavior', 'Intente Iniciar la aplicación nuevamente', Ext.emptyFn);
+		}
 	},
 	
 	exception: Ext.emptyFn,
