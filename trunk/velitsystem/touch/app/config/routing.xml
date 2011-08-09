@@ -15,7 +15,10 @@
 			<route name="desktop" pattern="^/Desktop" module="Desktop">
 				<route name=".index" pattern="(Index)?" action="Index" />
 			</route>
-
+			
+			<!-- Auth -->
+			<route name="login" pattern="^/login" module="%actions.login_module%" action="%actions.login_action%" />
+			<route name="logout" pattern="^/logout" module="%actions.login_module%" action="Logout" />
 
 			<!-- test module -->			
 			<route name="test" pattern="^/test" module="Test">
