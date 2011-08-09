@@ -12,8 +12,9 @@ App.views.AuthLogin = Ext.extend(App.views.FormBase, {
 	
     initComponent: function() {
         Ext.apply(this, {
-            id: 'authlogin',
+            id: 'AuthLogin',
         	title: 'Velit System User Autentication',
+        	url: 'login',
 
         	items: [{
         		xtype: 'fieldset',
@@ -22,7 +23,7 @@ App.views.AuthLogin = Ext.extend(App.views.FormBase, {
         		items: [{
             		xtype: 'textfield',
             		name: 'username',
-            		label: 'Username'
+            		label: 'Username',
             	},{
                     xtype: 'App.views.ErrorField',
                     fieldname: 'username'
@@ -42,7 +43,7 @@ App.views.AuthLogin = Ext.extend(App.views.FormBase, {
         		xtype: 'toolbar',
         		title: 'Velit System User Autentication'
         	},{
-        		dock: 'bottom',
+        		dock: 'top',
         		xtype: 'toolbar',
         		items: [{
         			xtype: 'spacer'
