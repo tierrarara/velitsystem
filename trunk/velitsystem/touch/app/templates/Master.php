@@ -29,6 +29,7 @@
 		<script src="<?php echo $ro->getBaseHref() ?>app/views/form/Base.js" type="text/javascript"></script>
 		<script src="<?php echo $ro->getBaseHref() ?>app/views/Viewport.js" type="text/javascript"></script>
 		<script src="<?php echo $ro->getBaseHref() ?>app/views/auth/Login.js" type="text/javascript"></script>
+		<script src="<?php echo $ro->getBaseHref() ?>app/views/desktop/Index.js" type="text/javascript"></script>
 		
 		<!-- Controllers -->
 		<script src="app/controllers/Error.js" type="text/javascript"></script>
