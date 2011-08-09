@@ -116,35 +116,51 @@ App = new Ext.Application({
     			try { 
     				// 	all resquest return json
     				var response = Ext.decode(request.responseText);
+    				
+    				// mover esta logica a un controlador
+    				
+    				if (response.success) {console.debug('success: true');
+	    				if (response.dispatch && response.dispatch.controller) {
+		   					 Ext.dispatch({
+		   				            controller: response.dispatch.controller,
+		   				            action: response.dispatch.action
+		   				    });
+		   					
+		   				}else if (response.view && response.view.length > 0) {
+	    					console.debug('response.view: '+ response.view);
+		   					var v;
 
-    				if (response.dispatch && response.dispatch.controller) {
-	   					 Ext.dispatch({
-	   				            controller: response.dispatch.controller,
-	   				            action: response.dispatch.action
-	   				    });
-	   					
-	   				}else if (response.view && response.view.length > 0) {
+		   					if (!App.vp.items.get(response.view)){
+		   						console.debug('Agregando view');
+		   						v = new App.views[response.view]();
+		   						App.vp.items.add(v);
+		   					}else {
+		   						console.debug('ya existe el view');
+		   					}
+		   					
+		   					// TODO: agregar data a la vista, tambien se pueden
+		   					// definir eventos en la vista que van cargando la data
+
+	    					App.vp.setActiveItem(response.view);
+	//    					var direction = (target === 'usersList') ? 'right' : 'left';
+	//    			        this.setActiveItem(
+	//    			            App.views[target],
+	//    			            { type: 'slide', direction: direction }
+	//    			        );	
+	    				}else {
+	    					throw "Dispatch or View is not define";
+	    				}
+    				
+    				}else {console.debug('success: false');
     					
-    					var v = new App.views[response.view]();
-    					
-    					App.vp.items.add(v);
-    					App.vp.setActiveItem(v);
-//    					var direction = (target === 'usersList') ? 'right' : 'left';
-//    			        this.setActiveItem(
-//    			            App.views[target],
-//    			            { type: 'slide', direction: direction }
-//    			        );	
-    				}else {
-    					throw "Respuesta Inadecuada del Servidor";
+    					throw response.message;
     				}
 
     				
 
     			} catch (ex) {
     				
-    				console.debug(ex);
-    				
-    				App.handleError();
+    				App.handleError(ex);
     			}
     			
     		}
@@ -156,11 +172,12 @@ App = new Ext.Application({
      * Funciona generica para notificar al usuario que ha ocurrido un error
      * de una forma "amigable"
      */
-    handleError: function () {
+    handleError: function (ex) {console.debug(ex);
     	// TODO: definnir parametros para manejar diferentes tipos de problemas
     	Ext.dispatch({
             controller: 'Error',
-            action    : 'handle'
+            action    : 'handle',
+            exception : ex 
         }); // dispatch default screen
     }
     
