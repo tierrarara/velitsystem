@@ -14,43 +14,33 @@ App.views.FormBase = Ext.extend(Ext.form.FormPanel, {
 	},
 	 
 	showErrors: function(errors) {
-	    //var fieldset = this.down('#userFormFieldset');
 		
-		this.items.each(function (field){
+		//this.resetFormErrors();
+		
+		errors.each(function(item,idx,length){
+			this.getFields(item.field).addCls('invalid-field');
+
+			var errorField = this.down('#'+item.field+'ErrorField');
 			
-			if (!field.isField) return;
+			 errorField.update(item.message);//errors.getByfiel(item.field);
+			 
+			 errorField.show();
 			
-			var fieldErrors = errors.getByField(field.name);
 			
-			if (fieldErrors.length > 0) {console.debug(field.name);
-			console.debug(this);
-	            var errorField = this.down('#'+field.name+'ErrorField');
-	            console.debug(errorField);
-	            console.debug('error field');
-	            field.addCls('invalid-field');
-	            errorField.update(fieldErrors);
-	            errorField.show();
-	        } else {
-	            this.resetField(field);
-	        }
 		},this);
 	
 	    //fieldset.setInstructions("Please amend the flagged fields");
 	},
 	
-	resetForm: function() {
-	    //var fieldset = this.down('#userFormFieldset');
-		this.items.each(function(field) {
-			if (!field.isField) return;
-			
-	        this.resetField(field);
-	        
-	    }, this);
-	    //fieldset.setInstructions(this.defaultInstructions);
-	    this.reset();
+	resetFormErrors: function() {
+		var f = this.getFields();
+
+		for(byName in f) {// no funciona con Ext.each
+			this.resetFieldError(this.getFields(byName));
+		}
 	},
 	
-	resetField: function(field) {
+	resetFieldError: function(field) {
 	    var errorField = this.down('#'+field.name+'ErrorField');
 	    errorField.hide();
 	    field.removeCls('invalid-field');
