@@ -14,7 +14,7 @@ App.views.Viewport = Ext.extend(Ext.Panel, {
     
     initComponent: function() {
         Ext.apply(this, {
-            html: 'Velit System'
+            html: ''
         });
         App.views.Viewport.superclass.initComponent.call(this);
     },
