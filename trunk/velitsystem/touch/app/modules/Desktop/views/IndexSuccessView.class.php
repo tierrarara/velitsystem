@@ -7,9 +7,9 @@ class Desktop_IndexSuccessView extends AppDesktopBaseView {
 		$this->setAttribute ( '_title', 'Index Action HTML' );
 	}
 	
-	public function executeJson() {
+	public function executeJson(AgaviRequestDataHolder $rd) {
 		$this->setupHtml ( $rd );
+		// TODO: panatalla inicial segun usuario
+		$this->_writter->view = 'DesktopIndex';
 	}
 }
-
-?>

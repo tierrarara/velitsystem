@@ -15,7 +15,7 @@ class Error_Error404SuccessView extends AppErrorBaseView {
 		$this->setupHtml ( $rd );
 		
 		$this->getResponse ()->setHttpStatusCode ( '404' );
+		
+		$this->getLayer('content')->setTemplate('Error404SuccessJson');
 	}
 }
-
-?>
