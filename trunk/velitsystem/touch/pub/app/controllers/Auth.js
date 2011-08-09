@@ -21,12 +21,19 @@ Ext.regController('Auth', {
 	},
 	
 	form : function (params) {
-		// creo la pantalla
-		var v = new App.views.AuthLogin();
-		// la agrego al vp
-		App.vp.items.add(v);
+		
+		var v;
+		
+		if (!App.vp.items.get('AuthLogin')){
+			console.debug('Agregando view');
+			v = new App.views['AuthLogin']();
+			App.vp.items.add(v);// la agrego al vp
+		}else {
+			console.debug('ya existe el view');
+		}
+		
 		// activo la patanlla para que se ves
-		App.vp.setActiveItem('authlogin');
+		App.vp.setActiveItem('AuthLogin');
 	},
 	
 	logIn: function (params) {
@@ -35,36 +42,45 @@ Ext.regController('Auth', {
 
 		var errors = user.validate();
 
-		//params.form.resetForm();
+		params.form.resetFormErrors();
 		
         if (!errors.isValid()) {
-        	console.debug('INVALID');
-			console.debug(errors);
-			console.debug('<--- errors');
-			params.form.showErrors(errors);
-			return;
+			
+        	params.form.showErrors(errors);
+			
+        	return;
+        	
 		}
-		console.debug('frm.VALID');
-//		params.form.submit({
-//			
-//			method: 'POST',
-//			
-//			waitTitle : 'Autenticando',
-//
-//			waitMsg : 'validando datos de usuario...',
-//			
-//			success : function(form, result) {
-//				console.debug('frm.submit.success');
-//				
-//			},
-//			failure : function (form, result	) {
-//				console.debug('frm.submit.failure');
-//			}
-//		});
+	
+		
+		
+		params.form.submit({
+			
+			method: 'POST',
+			
+			waitTitle : 'Autenticando',
+
+			waitMsg : 'validando datos de usuario...',
+			
+			success : function(form, result) {
+				Ext.dispatch({
+		            controller: 'Desktop',
+		            action    : 'index'
+		        });
+				
+			},
+			failure : function (form, result) {
+				// TODO: definir tipo de error
+				Ext.dispatch({
+		            controller: 'Error',
+		            action    : 'handle'
+		        });
+			}
+		});
 	},
 	
-	logOut: function () {
-		
+	logOut: function (params) {
+		App.rq('/logout');
 	}
 //	,
 //	
