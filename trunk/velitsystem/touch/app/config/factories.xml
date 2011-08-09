@@ -25,7 +25,17 @@
 		
 		<security_filter class="AgaviSecurityFilter" />
 		
-		<storage class="AgaviSessionStorage" />
+		<storage class="AgaviSessionStorage">
+    		<ae:parameter name="session_cookie_lifetime">10800</ae:parameter> <!-- lifetime of the session cookie in seconds -->
+    		<ae:parameter name="session_cookie_path">/</ae:parameter> <!-- path on the domain (single slash for all paths) -->
+    		<ae:parameter name="session_cookie_domain">.</ae:parameter> <!-- cookie domain (be careful with leading '.' as cookies
+                                                                                               are then visible to all subdomains) -->
+		    <ae:parameter name="session_cookie_secure">true</ae:parameter> <!-- true for secure connection cookie only -->
+    		<ae:parameter name="session_cookie_httponly">false</ae:parameter> <!-- set httponly flag (beware of XMLHttpRequest issues
+                     - otherwise it's not a bad measure (even though it doesn't protect you e. g. from HTTP TRACE attacks or the like) -->
+
+    <!-- for other parameters see AgaviSessionStorage file -->
+</storage>
 		
 		<translation_manager class="AgaviTranslationManager" />
 		
