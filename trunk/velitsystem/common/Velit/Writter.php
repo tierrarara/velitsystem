@@ -7,13 +7,14 @@
  * según requerimientos del controlador js que maneja la respuesta
  * 
  * @category   Velit
+ * @author Rafael Guerrero <tierrarara@gmail.com>
  * @package    Velit_Response
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
  * @version    $Id$
  */
 
-class Velit_Writter {
+abstract class Velit_Writter {
 	
 	/**
 	 * 
@@ -76,12 +77,8 @@ class Velit_Writter {
 	
 	/**
 	 * 
-	 * Devuelve el arreglo de datos
+	 * Definir como se escribe el objeto
 	 */
-	public function __toString() {
-		
-		return print_r(get_object_vars($this),true);
-	
-	}
+	abstract public function __toString();
 
 }
