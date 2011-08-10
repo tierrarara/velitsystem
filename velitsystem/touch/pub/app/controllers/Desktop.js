@@ -10,7 +10,7 @@
 
 Ext.regController('Desktop', {
 	
-	index: function () {
+	Index: function () {
 		
 		App.rq('/Desktop/Index');
 		

@@ -44,6 +44,8 @@ Ext.regController('Auth', {
 
 		params.form.resetFormErrors();
 		
+		 Ext.getCmp('login-fieldset').setInstructions(params.form.defaultInstructions);
+		
         if (!errors.isValid()) {
 			
         	params.form.showErrors(errors);
@@ -51,31 +53,31 @@ Ext.regController('Auth', {
         	return;
         	
 		}
-	
-		
 		
 		params.form.submit({
 			
-			method: 'POST',
+			method: 'post',
 			
 			waitTitle : 'Autenticando',
 
 			waitMsg : 'validando datos de usuario...',
-			
-			success : function(form, result) {
-				Ext.dispatch({
-		            controller: 'Desktop',
-		            action    : 'index'
-		        });
+			// si success = true
+			success : function(form, result, responseText) {
+
+				var response = Ext.decode(responseText);
+				
+				Ext.dispatch(response.dispatch);
 				
 			},
-			failure : function (form, result) {
-				// TODO: definir tipo de error
-				Ext.dispatch({
-		            controller: 'Error',
-		            action    : 'handle'
-		        });
-			}
+			// si success = false
+			failure : function (form, result, responseText) {
+				var response = Ext.decode(responseText);
+				
+				Ext.getCmp('login-fieldset').setInstructions('<span style="color: red;">'+response.message+'</span>');
+
+				
+			},
+			scope: params.form
 		});
 	},
 	

@@ -12,7 +12,11 @@ App.views.FormBase = Ext.extend(Ext.form.FormPanel, {
 	initComponent: function() {
 		App.views.FormBase.superclass.initComponent.call(this);
 	},
-	 
+	
+	/**
+	 * 
+	 * @param Ext.data.Errors
+	 */
 	showErrors: function(errors) {
 		
 		//this.resetFormErrors();
@@ -38,6 +42,7 @@ App.views.FormBase = Ext.extend(Ext.form.FormPanel, {
 		for(byName in f) {// no funciona con Ext.each
 			this.resetFieldError(this.getFields(byName));
 		}
+
 	},
 	
 	resetFieldError: function(field) {

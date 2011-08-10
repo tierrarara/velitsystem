@@ -22,15 +22,22 @@ App = new Ext.Application({
     },
     
     init : function () {
-    	// show main panel - Main Container
-    	 this.vp = new App.views.Viewport(); // asegurando solo un Viewport
-
-    	 // TODO: load config
-
-    	 Ext.dispatch({
-             controller: 'Desktop',
-             action    : 'index'
-         }); // dispatch default screen
+    	try{ 
+	    	// show main panel - Main Container
+			this.vp = new App.views.Viewport(); // asegurando solo un Viewport
+			
+			// TODO: load config
+			
+			Ext.dispatch({
+				controller: 'Desktop',
+				action    : 'Index'
+			}); // dispatch default screen
+			
+    	}catch (e) {
+    		
+    		App.handleError(e);
+    		
+		}
  
     },
     // este evento es llamado una vez es cargado el Viewport
@@ -98,14 +105,15 @@ App = new Ext.Application({
    
     		},
     		
-    		failure: function (p1,p2,p3) {
+    		failure: function (request,opts) {
     			console.debug('ajax - failure');
     		},
     		
     		callback: function (opts,success,request) {
     			console.debug('ajax - callback ');
     			
-    			if (!success) {
+    			if (!success) {// cambiar estas sentencias, el servidor puede 
+    				// devolver status: 200 y success : false
     				Ext.Msg.confirm('Warning', 'Try Again?', function (btn,value,opt) {
     					if (btn == 'yes') App.rq(opts.url);
     				});
@@ -119,7 +127,7 @@ App = new Ext.Application({
     				
     				// mover esta logica a un controlador
     				
-    				if (response.success) {console.debug('success: true');
+    				if (Ext.isBoolean(response.success)) {console.debug('success:');console.debug(response.success);
 	    				if (response.dispatch && response.dispatch.controller) {
 		   					 Ext.dispatch({
 		   				            controller: response.dispatch.controller,
@@ -179,10 +187,60 @@ App = new Ext.Application({
             action    : 'handle',
             exception : ex 
         }); // dispatch default screen
-    }
+    },
     
     
+    /**
+     * Se ejecuta cuando termina la solicitud si success = true
+     * luego es llamado el callback
+     * @param request
+     * @param opts
+     */
+    globalSuccessRqHandler: function (request,opts) {
+    	
+    },
     
+    /**
+     * Se ejecuta cuando termina la solicitud si success = false
+     * O si responseStatus != 200
+     * luego es llamado el callback
+     * @param request
+     * @param opts
+     */
+    globalFailureRqHandler: function (request,opts) {
+    	
+    },
+    
+    /**
+     * esta funcion se ejecuta despues de success o despues de failure,
+     * siempre se ejecuta
+     * @param opts
+     * @param success
+     * @param request
+     */
+    globalCallbackRqHandler: function (opts,success,request) {
+    	
+    },
+    
+    /**
+     * luego del callback estandar para la solicitud de la funcion form.submit
+     * esta funcion ejecuta cuando termina la solicitud si success = true
+     * @param request
+     * @param opts
+     */
+    globalSuccessSubmitHandler: function (form, result, responseText) {
+    	
+    },
+    
+    /**
+     * luego del callback estandar para la solicitud de la funcion form.submit
+     * Se ejecuta cuando termina la solicitud si success = false
+     * @param request
+     * @param opts
+     */
+    globalFailureSubmitqHandler: function (form, result, responseText) {
+    	
+    },
     
 });
 
