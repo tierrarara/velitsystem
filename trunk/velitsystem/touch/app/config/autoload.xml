@@ -9,6 +9,7 @@
 		
 		<!-- Manager Conexion Base de datos Agavi y Zend -->
 		<autoload name="AgaviZendManager">%core.app_dir%/../../common/agavi/database/AgaviZendManager.class.php</autoload>
+		<autoload name="AgaviZendDbSessionStorage">%core.app_dir%/../../common/agavi/storage/AgaviZendDbSessionStorage.class.php</autoload>
 		
 	</ae:configuration>
 	
