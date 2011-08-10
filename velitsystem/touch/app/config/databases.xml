@@ -5,25 +5,54 @@
 		<databases default="pdo_pgsql_main">
 			
 				<database name="pdo_pgsql_main" class="AgaviZendManager">
-				<!-- <ae:parameter name="dsn">postgres data sourc url</ae:parameter> -->
-				<ae:parameter name="database">velit_system</ae:parameter>
-				<ae:parameter name="username">velit</ae:parameter>
-				<ae:parameter name="password">1234567</ae:parameter>
-			</database>
+					<ae:parameter name="adapter">pdo_pgsql</ae:parameter>
+					<ae:parameter name="database">velit_system</ae:parameter>
+					<ae:parameter name="username">velit</ae:parameter>
+					<ae:parameter name="password">1234567</ae:parameter>
+				</database>
+				
+				<database name="session" class="AgaviPostgresqlDatabase">
+					<ae:parameter name="host">127.0.0.1</ae:parameter>
+					<ae:parameter name="database">velit_system</ae:parameter>
+					<ae:parameter name="username">velit</ae:parameter>
+					<ae:parameter name="password">1234567</ae:parameter>
+				</database>
 			
 		</databases>
 	</ae:configuration>
 	
 	
-	<ae:configuration>
+	<ae:configuration environment="onlinetest*">
 		<databases default="pdo_pgsql_main">
 			
 			<database name="pdo_pgsql_main" class="AgaviZendManager">
 				<!-- <ae:parameter name="dsn">postgres data sourc url</ae:parameter> -->
 				<ae:parameter name="adapter">pdo_pgsql</ae:parameter>
+				<ae:parameter name="database">velit_touch</ae:parameter>
+				<ae:parameter name="username">velit_touch_user</ae:parameter>
+				<ae:parameter name="password">v3l1t2011</ae:parameter>
+			</database>
+
+                           <database name="session" class="AgaviPostgresqlDatabase">
+					<ae:parameter name="host">127.0.0.1</ae:parameter>
+					<ae:parameter name="database">velit_touch</ae:parameter>
+				        <ae:parameter name="username">velit_touch_user</ae:parameter>
+				       <ae:parameter name="password">v3l1t2011</ae:parameter>
+				</database>
+			
+		</databases>
+	</ae:configuration>
+	
+	
+	
+	<ae:configuration environment="production">
+		<databases default="pdo_pgsql_main">
+			
+			<database name="pdo_pgsql_main" class="AgaviZendManager">
+				<ae:parameter name="adapter">pdo_pgsql</ae:parameter>
 				<ae:parameter name="database">velit_system</ae:parameter>
 				<ae:parameter name="username">velit</ae:parameter>
-				<ae:parameter name="password">1234567</ae:parameter>
+				<ae:parameter name="password">112233</ae:parameter>
 			</database>
 			
 		</databases>
