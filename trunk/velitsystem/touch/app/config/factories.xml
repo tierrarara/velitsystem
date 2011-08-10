@@ -25,18 +25,15 @@
 		
 		<security_filter class="AgaviSecurityFilter" />
 		
-		<storage class="AgaviSessionStorage">
-			<ae:parameter name="session_name">velit</ae:parameter>
-    		<ae:parameter name="session_cookie_lifetime">10800</ae:parameter> <!-- lifetime of the session cookie in seconds -->
-    		<ae:parameter name="session_cookie_path">/</ae:parameter> <!-- path on the domain (single slash for all paths) -->
-    		<ae:parameter name="session_cookie_domain">.touch</ae:parameter> <!-- cookie domain (be careful with leading '.' as cookies
-                                                                                               are then visible to all subdomains) -->
-		    <ae:parameter name="session_cookie_secure">false</ae:parameter> <!-- true for secure connection cookie only -->
-    		<ae:parameter name="session_cookie_httponly">false</ae:parameter> <!-- set httponly flag (beware of XMLHttpRequest issues
-                     - otherwise it's not a bad measure (even though it doesn't protect you e. g. from HTTP TRACE attacks or the like) -->
-
-    <!-- for other parameters see AgaviSessionStorage file -->
-</storage>
+		<storage class="AgaviPostgresqlSessionStorage">
+			<!-- <ae:parameter name="session_name">velit</ae:parameter>
+    		<ae:parameter name="session_cookie_lifetime">10800</ae:parameter>
+    		<ae:parameter name="session_cookie_path">/</ae:parameter>
+    		<ae:parameter name="session_cookie_domain">.touch.com</ae:parameter>-->
+			<ae:parameter name="db_table">_sessions</ae:parameter>
+    		<ae:parameter name="database">session</ae:parameter>
+    		
+		</storage>
 		
 		<translation_manager class="AgaviTranslationManager" />
 		
