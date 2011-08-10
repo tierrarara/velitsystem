@@ -19,6 +19,7 @@ abstract class Velit_Writter {
 	/**
 	 * 
 	 * Indica si la solicitud se ejecuto satisfactoriamente
+	 * 
 	 * @var bool
 	 */
 	public $success = true;

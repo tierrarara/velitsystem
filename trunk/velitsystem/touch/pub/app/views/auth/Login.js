@@ -15,15 +15,17 @@ App.views.AuthLogin = Ext.extend(App.views.FormBase, {
             id: 'AuthLogin',
         	title: 'Velit System User Autentication',
         	url: 'login',
+        	defaultInstructions: 'Instructions Label Text',
 
         	items: [{
+        		id: 'login-fieldset',
         		xtype: 'fieldset',
         		title: 'User Credentials',
         		instructions: 'Instructions Label Text',
         		items: [{
             		xtype: 'textfield',
             		name: 'username',
-            		label: 'Username',
+            		label: 'Username'
             	},{
                     xtype: 'App.views.ErrorField',
                     fieldname: 'username'

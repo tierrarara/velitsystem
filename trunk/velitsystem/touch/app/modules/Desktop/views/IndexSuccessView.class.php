@@ -11,5 +11,7 @@ class Desktop_IndexSuccessView extends AppDesktopBaseView {
 		$this->setupHtml ( $rd );
 		// TODO: panatalla inicial segun usuario
 		$this->_writter->view = 'DesktopIndex';
+		
+		$this->_writter->success = true;
 	}
 }
