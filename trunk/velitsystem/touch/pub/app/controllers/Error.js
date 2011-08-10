@@ -14,6 +14,9 @@ Ext.regController('Error', {
 
 		if(params.exception) {
 			Ext.Msg.alert('Unexpected Behavior', params.exception, Ext.emptyFn);
+			
+			console.debug(params.exception);
+			
 		}else {
 			Ext.Msg.alert('Unexpected Behavior', 'Intente Iniciar la aplicación nuevamente', Ext.emptyFn);
 		}
