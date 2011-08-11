@@ -13,7 +13,8 @@
 
 			<!-- Desktop -->
 			<route name="desktop" pattern="^/Desktop" module="Desktop">
-				<route name=".index" pattern="(Index)?" action="Index" />
+				<route name=".index" pattern="/Index" action="Index" />
+				<route name="menu" pattern="/Menu" action="Menu" />
 			</route>
 			
 			<!-- Auth -->
