@@ -8,34 +8,42 @@
  * @version    $Id$
  */
 
-App.views.DesktopIndex = Ext.extend(Ext.TabPanel, {
+App.views.DesktopIndex = Ext.extend(Ext.Panel, {
 
     initComponent: function() {
+    	
+        var store =  new Ext.data.Store({
+            model: 'DesktopMenu',
+           
+            autoLoad: true
+        });
+    	
     	Ext.apply(this, {
-    		title: 'Tab Panel',
+
     		id: 'DesktopIndex',
-    		fullscreen: false,
-    		tabBar: {
-    			dock: 'bottom',
-    			scroll: 'horizontal',
-    			sortable: true,
-    			layout: {
-    				pack: 'center'
-    			}
-    		},
-    		items: [
-                    { iconCls: 'bookmarks', title: 'Bookmarks', html:  ' html Bookmarks'  },
-                    { iconCls: 'download', title: 'Download', html: 'tab Download' },
-                    { iconCls: 'favorites', title: 'Favorites',html: 'tab Favorites' },
-                    { iconCls: 'info', title: 'Info' },
-                    { iconCls: 'more', title: 'More' },
-                    { iconCls: 'search', title: 'Search' },
-                    { iconCls: 'settings', title: 'Settings' },
-                    { iconCls: 'team', title: 'Team' },
-                    { iconCls: 'time', title: 'Time' },
-                    { iconCls: 'user', title: 'User' }
-                ]
-    	})
+    		layout: 'fit',
+    		
+			dockedItems: [{
+				dock: 'top',
+				xtype: 'toolbar',
+				title: 'Touch Velit System'
+			}],
+    		
+    		items: [{
+    			id: 'DesktopIndex-item-menu',
+    			xtype: 'list',
+                itemTpl: '{name} - <small>{description}</small>',
+                grouped: false,
+                store: store,
+                onItemDisclosure: true,
+
+                listeners: {
+                    disclose: function(item, node, index, eventObj) {
+                    	console.debug('disclose');
+                    }
+                }
+    		}]
+    	});
     	App.views.DesktopIndex.superclass.initComponent.call(this);
     }
 });
