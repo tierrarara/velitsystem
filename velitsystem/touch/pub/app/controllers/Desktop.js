@@ -23,8 +23,6 @@ Ext.regController('Desktop', {
 		}
 		
 		App.addView(viewName, true);*/
-		
-		
 
 	}
 	

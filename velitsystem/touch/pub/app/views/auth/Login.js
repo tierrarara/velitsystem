@@ -13,7 +13,6 @@ App.views.AuthLogin = Ext.extend(App.views.FormBase, {
     initComponent: function() {
         Ext.apply(this, {
             id: 'AuthLogin',
-        	title: 'Velit System User Autentication',
         	url: 'login',
         	defaultInstructions: 'Instructions Label Text',
 
@@ -43,15 +42,16 @@ App.views.AuthLogin = Ext.extend(App.views.FormBase, {
         	dockedItems: [{
         		dock: 'top',
         		xtype: 'toolbar',
-        		title: 'Velit System User Autentication'
+        		title: 'User Autentication'
         	},{
-        		dock: 'top',
+        		dock: 'bottom',
         		xtype: 'toolbar',
         		items: [{
         			xtype: 'spacer'
         		},{
             		xtype: 'button',
             		text: 'Enter',
+            		ui: 'action',
             		handler: function (e) {
             			 Ext.dispatch({
             	             controller: 'Auth',

@@ -22,12 +22,7 @@ App.views.DesktopIndex = Ext.extend(Ext.Panel, {
 
     		id: 'DesktopIndex',
     		layout: 'fit',
-    		
-			dockedItems: [{
-				dock: 'top',
-				xtype: 'toolbar',
-				title: 'Touch Velit System'
-			}],
+
     		
     		items: [{
     			id: 'DesktopIndex-item-menu',
