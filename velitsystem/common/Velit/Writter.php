@@ -7,7 +7,7 @@
  * según requerimientos del controlador js que maneja la respuesta
  * 
  * @category   Velit
- * @author Rafael Guerrero <tierrarara@gmail.com>
+ * @author     Rafael Guerrero <tierrarara@gmail.com>
  * @package    Velit_Response
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
