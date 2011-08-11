@@ -15,21 +15,23 @@
 		 -->
 		
 		<!-- Application -->
-		<script src="<?php echo $ro->getBaseHref() ?>app/app.js"></script>
+		<script src="app/app.js"></script>
 		
 		  <!--models-->
 		<script src="app/models/auth/User.js" type="text/javascript"></script>
+		<script src="app/models/desktop/Menu.js" type="text/javascript"></script>
 		
 		
 		<!--stores-->
 <!--		<script src="app/stores/Users.js" type="text/javascript"></script>-->
 		
+		
 		<!-- Views -->
-		<script src="<?php echo $ro->getBaseHref() ?>app/views/ErrorField.js" type="text/javascript"></script>
-		<script src="<?php echo $ro->getBaseHref() ?>app/views/form/Base.js" type="text/javascript"></script>
-		<script src="<?php echo $ro->getBaseHref() ?>app/views/Viewport.js" type="text/javascript"></script>
-		<script src="<?php echo $ro->getBaseHref() ?>app/views/auth/Login.js" type="text/javascript"></script>
-		<script src="<?php echo $ro->getBaseHref() ?>app/views/desktop/Index.js" type="text/javascript"></script>
+		<script src="app/views/ErrorField.js" type="text/javascript"></script>
+		<script src="app/views/form/Base.js" type="text/javascript"></script>
+		<script src="app/views/Viewport.js" type="text/javascript"></script>
+		<script src="app/views/auth/Login.js" type="text/javascript"></script>
+		<script src="app/views/desktop/Index.js" type="text/javascript"></script>
 		
 		<!-- Controllers -->
 		<script src="app/controllers/Error.js" type="text/javascript"></script>
