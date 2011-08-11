@@ -1,1 +1,1 @@
-{"success": "false", "message": "Page Not Found"}
+<?php echo $t['_writter']?>
