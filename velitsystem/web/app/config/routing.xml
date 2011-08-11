@@ -2,11 +2,29 @@
 <ae:configurations xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" xmlns="http://agavi.org/agavi/config/parts/routing/1.0">
 	<ae:configuration>
 		<routes>
-			<!-- this shows the welcome page after creating a project. you should remove it along with the entire "Welcome" module and the pub/welcome/ directory -->
-			<route pattern="" module="Welcome" action="Index" />
+			
+			<route name="output_json" pattern=".json$" output_type="json" stop="false" />
+			<!-- or -->
+			<route name="output_ajax" pattern="XMLHttpRequest" source="_SERVER[HTTP_X_REQUESTED_WITH]" output_type="ajax" stop="false" />
 			
 			<!-- default action for "/" -->
-			<route name="index" pattern="^/$" module="%actions.default_module%" action="%actions.default_action%" />
+			<route name="index" pattern="^/$" module="%actions.default_module%" action="%actions.default_action%" output_type="html" />
+
+
+			<!-- Desktop -->
+			<route name="desktop" pattern="^/Desktop" module="Desktop">
+				<route name=".index" pattern="(Index)?" action="Index" />
+			</route>
+			
+			<!-- Auth -->
+			<route name="login" pattern="^/login" module="%actions.login_module%" action="%actions.login_action%" />
+			<route name="logout" pattern="^/logout" module="%actions.login_module%" action="Logout" />
+
+			<!-- test module -->			
+			<route name="test" pattern="^/test" module="Test">
+				<route name=".index" pattern="" action="Index" />
+			</route>
+			
 			
 			<!-- an example for a CRUD-style set of routes -->
 			<route name="products" pattern="^/products" module="Products">
