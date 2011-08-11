@@ -22,16 +22,12 @@ Ext.regController('Auth', {
 	
 	form : function (params) {
 		
-		var v;
-		
 		if (!App.vp.items.get('AuthLogin')){
-			console.debug('Agregando view');
-			v = new App.views['AuthLogin']();
+			console.debug('Agregando view AuthLogin');
+			var v = new App.views['AuthLogin']();
 			App.vp.items.add(v);// la agrego al vp
-		}else {
-			console.debug('ya existe el view');
 		}
-		
+
 		// activo la patanlla para que se ves
 		App.vp.setActiveItem('AuthLogin');
 	},
@@ -65,8 +61,11 @@ Ext.regController('Auth', {
 			success : function(form, result, responseText) {
 
 				var response = Ext.decode(responseText);
-				
+
 				Ext.dispatch(response.dispatch);
+				
+				// activar el boton logout
+				Ext.getCmp('btn-logout').show('fade');
 				
 			},
 			// si success = false
@@ -82,6 +81,12 @@ Ext.regController('Auth', {
 	},
 	
 	logOut: function (params) {
+		// TODO: colocar una funcion success a App.rq como parametro
+		// para marcar como no autenticado cuando no se pueda hacer el request
+		App.user.isAuthenticate = false;
+		
+		Ext.getCmp('btn-logout').hide('fade');
+		
 		App.rq('/logout');
 	}
 //	,

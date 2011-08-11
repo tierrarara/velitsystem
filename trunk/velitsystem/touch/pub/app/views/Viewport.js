@@ -13,8 +13,32 @@ App.views.Viewport = Ext.extend(Ext.Panel, {
     layout: 'card',
     
     initComponent: function() {
+    	
+    	this.loginBtn = new Ext.Button({
+    		id: 'btn-logout',
+            hidden: true,
+            text: 'logOut',
+            handler: function (evt) {
+            	Ext.dispatch({
+            		controller: 'Auth',
+            		action: 'logOut',
+            	});
+            }
+        });
+    	
+    	
         Ext.apply(this, {
-            html: ''
+        	// top bar global
+        	dockedItems: [{
+        		xtype: 'toolbar',
+        		dock: 'top',
+        		title:'Touch Velit System - vTouch',
+        		items:[{
+        			xtype: 'spacer'
+        		},this.loginBtn]
+        	}]
+        	
+        	
         });
         App.views.Viewport.superclass.initComponent.call(this);
     },
