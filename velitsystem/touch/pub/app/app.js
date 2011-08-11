@@ -66,7 +66,7 @@ App = new Ext.Application({
     	
     	if (!method) method = 'GET'; 
     	
-    	// TODO: definir un objeto ajax global
+    	// @var Ext.data.Connection
     	var _rq = new Ext.data.Connection({
     	    listeners: {
     	    	beforerequest: {
@@ -127,44 +127,26 @@ App = new Ext.Application({
     				
     				// mover esta logica a un controlador
     				
-    				if (Ext.isBoolean(response.success)) {console.debug('success:');console.debug(response.success);
+    				if (Ext.isBoolean(response.success)) {
 	    				if (response.dispatch && response.dispatch.controller) {
-		   					 Ext.dispatch({
-		   				            controller: response.dispatch.controller,
-		   				            action: response.dispatch.action
-		   				    });
+	    					// pasar la data al controlador
+	    					response.dispatch.data = response;
+	    					
+	    					Ext.dispatch(response.dispatch);
 		   					
 		   				}else if (response.view && response.view.length > 0) {
-	    					console.debug('response.view: '+ response.view);
-		   					var v;
-
-		   					if (!App.vp.items.get(response.view)){
-		   						console.debug('Agregando view');
-		   						v = new App.views[response.view]();
-		   						App.vp.items.add(v);
-		   					}else {
-		   						console.debug('ya existe el view');
-		   					}
+	    					
+		   					App.addView(response.view, true);
 		   					
-		   					// TODO: agregar data a la vista, tambien se pueden
-		   					// definir eventos en la vista que van cargando la data
 
-	    					App.vp.setActiveItem(response.view);
-	//    					var direction = (target === 'usersList') ? 'right' : 'left';
-	//    			        this.setActiveItem(
-	//    			            App.views[target],
-	//    			            { type: 'slide', direction: direction }
-	//    			        );	
 	    				}else {
 	    					throw "Dispatch or View is not define";
 	    				}
     				
-    				}else {console.debug('success: false');
-    					
+    				}else {
+    					// si no viene response.success o tiene un valor no booleano
     					throw response.message;
     				}
-
-    				
 
     			} catch (ex) {
     				
@@ -189,6 +171,28 @@ App = new Ext.Application({
         }); // dispatch default screen
     },
     
+    addView: function (viewName, active) {
+
+    	// TODO: registrar las vistas que se van cargando para ir limpiando el cache
+    	
+    	var v = App.vp.items.get(viewName)
+		
+		if (!v) {
+			// creo la vista si no existe
+			v = new App.views[viewName]();
+			
+			App.vp.add(v);
+		}
+    	
+    	if (active == true) {
+    		App.vp.setActiveItem(v);
+    	}
+    	
+    	return v;
+    	// var direction = (target === 'usersList') ? 'right' : 'left';
+    	// this.setActiveItem(App.views[target], { type: 'slide', direction: direction }
+    	
+    },
     
     /**
      * Se ejecuta cuando termina la solicitud si success = true
@@ -197,7 +201,7 @@ App = new Ext.Application({
      * @param opts
      */
     globalSuccessRqHandler: function (request,opts) {
-    	
+    	// TODO: definir funcion
     },
     
     /**
@@ -208,7 +212,7 @@ App = new Ext.Application({
      * @param opts
      */
     globalFailureRqHandler: function (request,opts) {
-    	
+    	// TODO: definir funcion
     },
     
     /**
@@ -219,7 +223,7 @@ App = new Ext.Application({
      * @param request
      */
     globalCallbackRqHandler: function (opts,success,request) {
-    	
+    	// TODO: definir funcion
     },
     
     /**
@@ -229,7 +233,7 @@ App = new Ext.Application({
      * @param opts
      */
     globalSuccessSubmitHandler: function (form, result, responseText) {
-    	
+    	// TODO: definir funcion
     },
     
     /**
@@ -239,12 +243,12 @@ App = new Ext.Application({
      * @param opts
      */
     globalFailureSubmitqHandler: function (form, result, responseText) {
-    	
+    	// TODO: definir funcion
     },
     
 });
 
 
-Ext.Router.draw(function(map) {
+Ext.Router.draw(function(map) { console.debug('Ext.Router.draw');
     map.connect(':controller/:action');
 });
