@@ -24,6 +24,7 @@
 			<!-- test module -->			
 			<route name="test" pattern="^/test" module="Test">
 				<route name=".index" pattern="" action="Index" />
+				<route name=".index" pattern="/rest" action="Rest" />
 			</route>
 			
 			
