@@ -13,6 +13,7 @@ App = new Ext.Application({
     started: false,
     config: null,
     baseUrl: '/', // TODO: cargar desde la configuracion inicial
+    user: {},
 
     launch: function() {
     	
