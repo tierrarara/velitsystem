@@ -15,7 +15,8 @@
 		 -->
 		
 		<!-- Application -->
-		<script src="<?php echo $ro->getBaseHref() ?>js/list.js"></script>
+<!--		<script src="<?php echo $ro->getBaseHref() ?>js/device_test.js"></script>-->
+		<script src="<?php echo $ro->getBaseHref() ?>js/restproxy.js"></script>
 		
 	</head>
 	<body>
