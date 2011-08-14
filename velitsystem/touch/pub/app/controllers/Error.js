@@ -5,7 +5,7 @@
  * @subpackage Controller
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
- * @version $Id$
+ * @version    $Id: Error.js 123 2011-08-14 23:24:55Z tierrarara@gmail.com $
  */
 
 Ext.regController('Error', {
