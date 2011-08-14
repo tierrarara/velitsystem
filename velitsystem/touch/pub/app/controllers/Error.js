@@ -5,7 +5,7 @@
  * @subpackage Controller
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
- * @version    $Id$
+ * @version $Id$
  */
 
 Ext.regController('Error', {
