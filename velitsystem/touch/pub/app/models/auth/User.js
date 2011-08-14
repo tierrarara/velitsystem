@@ -5,7 +5,7 @@
  * @subpackage Model
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
- * @version    $Id: Viewport.js 54 2011-08-06 17:56:05Z tierrarara@gmail.com $
+ * @version    $Id: User.js 54 2011-08-06 17:56:05Z tierrarara@gmail.com $
  */
 App.models.AuthUser = Ext.regModel('AuthUser', {
 	idProperty: '_dex_row_user_id',
@@ -30,7 +30,7 @@ App.models.AuthUser = Ext.regModel('AuthUser', {
     }],
     
     proxy: {
-    	url: '/login',
+    	url: App.baseUrl + 'login',
         type: 'ajax',// solo consultar usuario
         id: 'proxy-authuser'
     }
