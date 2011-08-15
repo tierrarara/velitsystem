@@ -21,7 +21,7 @@ App.views.Viewport = Ext.extend(Ext.Panel, {
             handler: function (evt) {
             	Ext.dispatch({
             		controller: 'Auth',
-            		action: 'logOut',
+            		action: 'logOut'
             	});
             }
         });
