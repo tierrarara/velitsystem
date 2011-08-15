@@ -20,6 +20,7 @@
 		  <!--models-->
 		<script src="app/models/auth/User.js" type="text/javascript"></script>
 		<script src="app/models/desktop/Menu.js" type="text/javascript"></script>
+		<script src="app/models/Customer.js" type="text/javascript"></script>
 		
 		
 		<!--stores-->
@@ -32,6 +33,7 @@
 		<script src="app/views/Viewport.js" type="text/javascript"></script>
 		<script src="app/views/auth/Login.js" type="text/javascript"></script>
 		<script src="app/views/desktop/Index.js" type="text/javascript"></script>
+		<script src="app/views/customer/Attention.js" type="text/javascript"></script>
 		
 		<!-- Controllers -->
 		<script src="app/controllers/Error.js" type="text/javascript"></script>
