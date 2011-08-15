@@ -12,7 +12,7 @@ App = new Ext.Application({
     name: "App",
     started: false,
     config: null,
-    baseUrl: '/', // TODO: cargar desde la configuracion inicial
+    baseUrl: '/velitsystem/touch/pub/', // TODO: cargar desde la configuracion inicial
     user: {},
 
     launch: function() {

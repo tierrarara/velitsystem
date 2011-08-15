@@ -15,7 +15,7 @@ Ext.regModel('DesktopMenu', {
 	}, 'name', 'description', 'controller', 'action' ],
 	proxy: {
 		type: 'ajax',
-		url : '/Desktop/Menu',
+		url : App.baseUrl + 'Desktop/Menu',
 		reader: {
 			type: 'json',
 			root: 'data'
