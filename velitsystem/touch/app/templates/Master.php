@@ -39,6 +39,7 @@
 		<script src="app/controllers/Error.js" type="text/javascript"></script>
 		<script src="app/controllers/Auth.js" type="text/javascript"></script>
 		<script src="app/controllers/Desktop.js" type="text/javascript"></script>
+		<script src="app/controllers/Customer.js" type="text/javascript"></script>
 		
 		
 		
