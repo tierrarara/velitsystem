@@ -26,7 +26,6 @@ var st = new Ext.data.Store({
 
 st.load();
 
-
 var m1 = Ext.ModelMgr.create({name: 'nuevo', description: 'nueva description'}, 'test');
 
 m1.save();
