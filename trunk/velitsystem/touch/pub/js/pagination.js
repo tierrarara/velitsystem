@@ -19,7 +19,7 @@ var list = new Ext.Application({
 	
 		Ext.regModel('test', {
 			fields : ['id', 'name'],
-			idProperty: 'num',
+			idProperty: 'id',
 			proxy: {
 				type: 'ajax',
 				url : '/test/paginations',
