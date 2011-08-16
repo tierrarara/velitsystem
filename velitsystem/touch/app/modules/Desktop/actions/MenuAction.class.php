@@ -30,8 +30,8 @@ class Desktop_MenuAction extends AppDesktopBaseAction {
 						'_dex_row_menu_id' => 2, 
 						'name' => 'Customer Attention', 
 						'description' => 'Customers Operations', 
-						'controller' => '', 
-						'action' => '' ), 
+						'controller' => 'Customer', 
+						'action' => 'List' ), 
 				array (
 						'_dex_row_menu_id' => 3, 
 						'name' => 'Movements', 
