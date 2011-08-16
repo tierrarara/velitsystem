@@ -23,8 +23,9 @@
 
 			<!-- test module -->			
 			<route name="test" pattern="^/test" module="Test">
-				<route name=".index" pattern="" action="Index" />
-				<route name=".index" pattern="/rest" action="Rest" />
+				<route name=".index" pattern="/index" action="Index" />
+				<route name=".rest" pattern="/rest" action="Rest" />
+				<route name=".pagination" pattern="/paginations" action="Pagination" />
 			</route>
 			
 			
