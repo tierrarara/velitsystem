@@ -12,17 +12,14 @@ Ext.regController('Desktop', {
 	// show view DesktopIndex or defined in Params
 	Index: function (params) {
 		
-		
-		// como este es el primer controlador
-		App.rq('Desktop/Index');
-		
-		/*var viewName = 'DesktopIndex', v;
-
-		if (params.view){
-			viewName = params.view; 
+		if (!Ext.getCmp('DesktopIndex')) {
+			App.rq('Desktop/Index');
+			return;
 		}
-		
-		App.addView(viewName, true);*/
+
+		App.addView({
+			viewName: 'DesktopIndex'
+		});
 
 	}
 	
