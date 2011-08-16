@@ -12,7 +12,7 @@ App = new Ext.Application({
     name: "App",
     started: false,
     config: null,
-    baseUrl: '/velitsystem/touch/pub/', // TODO: cargar desde la configuracion inicial
+    baseUrl: '/', // TODO: cargar desde la configuracion inicial
     user: {},
 
     launch: function() {
@@ -28,10 +28,11 @@ App = new Ext.Application({
 			this.vp = new App.views.Viewport(); // asegurando solo un Viewport
 			
 			// TODO: load config
-			
+			// si carga un hash del url no deberia ejecutar esta sentencia
 			Ext.dispatch({
 				controller: 'Desktop',
-				action    : 'Index'
+				action    : 'Index',
+				historyUrl: 'Desktop/Index'
 			}); // dispatch default screen
 			
     	}catch (e) {
@@ -137,7 +138,9 @@ App = new Ext.Application({
 		   					
 		   				}else if (response.view && response.view.length > 0) {
 	    					
-		   					App.addView(response.view, true);
+		   					App.addView({
+		   						viewName: response.view 
+		   					});
 		   					
 
 	    				}else {
@@ -172,20 +175,22 @@ App = new Ext.Application({
         }); // dispatch default screen
     },
     
-    addView: function (viewName, active) {
+    addView: function (params) {
 
     	// TODO: registrar las vistas que se van cargando para ir limpiando el cache
     	
-    	var v = App.vp.items.get(viewName)
+    	params.show = Ext.isBoolean(params.show) ? params.show : true;
+    	
+    	var v = App.vp.items.get(params.viewName)
 		
 		if (!v) {
 			// creo la vista si no existe
-			v = new App.views[viewName]();
+			v = new App.views[params.viewName]();
 			
 			App.vp.add(v);
 		}
     	
-    	if (active == true) {
+    	if (params.show) {
     		App.vp.setActiveItem(v);
     	}
     	
