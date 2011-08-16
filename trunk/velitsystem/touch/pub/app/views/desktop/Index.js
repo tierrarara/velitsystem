@@ -34,7 +34,14 @@ App.views.DesktopIndex = Ext.extend(Ext.Panel, {
 
                 listeners: {
                     disclose: function(item, node, index, eventObj) {
-                    	console.debug('disclose');
+                    	
+                    	if (!item.data.controller) return;
+
+                    	Ext.dispatch({
+                    		controller: item.data.controller,
+                    		action: item.data.action,
+                    		historyUrl: item.data.controller + '/' + item.data.action 
+                    	});
                     }
                 }
     		}]
