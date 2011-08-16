@@ -17,7 +17,9 @@
 		<!-- Application -->
 <!--		<script src="<?php echo $ro->getBaseHref() ?>js/device_test.js"></script>-->
 <!--		<script src="<?php echo $ro->getBaseHref() ?>js/restproxy.js"></script>-->
-		<script src="<?php echo $ro->getBaseHref() ?>js/testpanel.js"></script>
+<!--		<script src="<?php echo $ro->getBaseHref() ?>js/testpanel.js"></script>-->
+		<script src="<?php echo $ro->getBaseHref() ?>js/pagination.js"></script>
+
 		
 	</head>
 	<body>
