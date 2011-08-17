@@ -26,15 +26,13 @@
 		<security_filter class="AgaviSecurityFilter" />
 		
 		<storage class="AgaviPostgresqlSessionStorage">
-			<!-- <ae:parameter name="session_name">velit</ae:parameter>
-    		<ae:parameter name="session_cookie_lifetime">10800</ae:parameter>
-    		<ae:parameter name="session_cookie_path">/</ae:parameter>
-    		<ae:parameter name="session_cookie_domain">.touch.com</ae:parameter>-->
-			<ae:parameter name="db_table">_sessions</ae:parameter>
-    		<ae:parameter name="database">session</ae:parameter>
-    		
+			<ae:parameter name="database">session</ae:parameter>
+			<ae:parameter name="db_table">_session</ae:parameter>
+			<ae:parameter name="db_id_col">_dex_row_session_id</ae:parameter>
+			<ae:parameter name="db_data_col">data</ae:parameter>
+			<ae:parameter name="db_time_col">time</ae:parameter>
 		</storage>
-		
+
 		<translation_manager class="AgaviTranslationManager" />
 		
 		<user class="AgaviSecurityUser" />

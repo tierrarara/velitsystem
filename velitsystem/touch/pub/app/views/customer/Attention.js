@@ -18,7 +18,14 @@ App.views.CustomerAttention = Ext.extend(Ext.Panel, {
 			
 		// Objeto para cargar la data definida en la vista de Customer
 		var Store = new Ext.data.Store({
-			model:'Customer'
+			model:'Customer',
+			clearOnPageLoad: true,
+			remoteFilter: true,
+			autoLoad: true,
+			filters: [{
+				property: 'day',
+				value   : date.getDay()
+			}]
 		});
 		
 		Ext.apply(this, {
@@ -27,6 +34,7 @@ App.views.CustomerAttention = Ext.extend(Ext.Panel, {
 			
 			// lista de clientens
 			items:[{
+				id: 'Customer-List',
 				xtype:'list',
 				store: Store,
 				
@@ -38,70 +46,62 @@ App.views.CustomerAttention = Ext.extend(Ext.Panel, {
 			// botones
 			dockedItems: [{
 				xtype:'toolbar',
-				dock:'top',
-				items:[{
-					xtype:'button',
-					text:'Search By Name',
-					// TODO: Hasta que no se haga la funcion que realizara este
-					// boton se deja en Empty
-					handler:Ext.emptyFn
-				}]
-					
-			},
-			{
-				xtype:'toolbar',
 				dock:'bottom',
 				items:[{
+					id: 'day-option-route',
 					xtype: 'segmentedbutton',
 					items:[{
 						xtype:'button',
-						text:'Monday',
+						text:'Mo',
 						pressed: 1 == date.getDay(),
-						keyDay:1,
-						handler:this.onSelectDay
+						keyDay:1
 					},
 					{
 						xtype:'button',
-						text:'Tuesday',
+						text:'Tu',
 						pressed: 2 == date.getDay(),
-						keyDay:2,
-						handler:this.onSelectDay
+						keyDay:2
 					},
 					{
 						xtype:'button',
-						text:'Wednsday',
+						text:'We',
 						pressed: 3 == date.getDay(),
-						keyDay:3,
-						handler:this.onSelectDay
+						keyDay:3
 					},
 					{
 						xtype:'button',
-						text:'Thursday',
+						text:'Th',
 						pressed: 4 == date.getDay(),
-						keyDay:4,
-						handler:this.onSelectDay
+						keyDay:4
 					},
 					{
 						xtype:'button',
-						text:'Friday',
+						text:'Fr',
 						pressed: 5 == date.getDay(),
-						keyDay:5,
-						handler:this.onSelectDay
+						keyDay:5
 					},
 					{
 						xtype:'button',
-						text:'Saturday',
+						text:'Sa',
 						pressed: 6 == date.getDay(),
-						keyDay:6,
-						handler:this.onSelectDay
+						keyDay:6
 					},
 					{
 						xtype:'button',
-						text:'Sunday',
+						text:'Su',
 						pressed: 0 == date.getDay(),
-						keyDay:0,
-						handler:this.onSelectDay
-					}]
+						keyDay:0
+					}],
+					listeners: {
+						toggle: {
+							fn: function (seg, btn, pressed) {
+								if (pressed) {
+									this.onSelectDay(btn.keyDay);
+								}
+							},
+							scope: this
+						}
+					}
 				},{
 					xtype: 'searchfield',
 					name: 'search',
@@ -115,24 +115,26 @@ App.views.CustomerAttention = Ext.extend(Ext.Panel, {
 			}],
 			
 			listeners: {
-				render: function () {
-					console.debug('render');
+				show: function (panel) {
+
 				}
+				
 			}
 		});
 	
 		App.views.CustomerAttention.superclass.initComponent.call(this);
 	},
 
-	onSelectDay: function(event){
+	onSelectDay: function(keyDay){
 		
 		Ext.dispatch({
 			controller:'Customer',
 			action:'SelectDay',
-			day:event.keyDay,
-			historyUrl: 'Customer/SelectDay/'+event.keyDay
+			day: keyDay,
+			store: Ext.getCmp('Customer-List').getStore(),
+			historyUrl: 'Customer/SelectDay/'+keyDay
 		});
-	},
+	}
 	
 	
 

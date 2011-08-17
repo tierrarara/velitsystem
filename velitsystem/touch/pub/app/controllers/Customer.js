@@ -16,8 +16,11 @@ Ext.regController('Customer', {
 		});
 	},
 	SelectDay : function(params) {
-		console.debug(params);
-		App.rq('Customer/List');
+
+		params.store.clearFilter();
+		// load new data by day
+		params.store.filter('day', params.day);
+		
 	}
 
 });

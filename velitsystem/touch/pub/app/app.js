@@ -139,7 +139,7 @@ App = new Ext.Application({
 		   				}else if (response.view && response.view.length > 0) {
 	    					
 		   					App.addView({
-		   						viewName: response.view 
+		   						viewName: response.view
 		   					});
 		   					
 
@@ -178,8 +178,10 @@ App = new Ext.Application({
     addView: function (params) {
 
     	// TODO: registrar las vistas que se van cargando para ir limpiando el cache
+    	if (params.active == undefined) {
+    		params.active = true;
+    	}
     	
-    	params.show = Ext.isBoolean(params.show) ? params.show : true;
     	
     	var v = App.vp.items.get(params.viewName)
 		
@@ -190,7 +192,7 @@ App = new Ext.Application({
 			App.vp.add(v);
 		}
     	
-    	if (params.show) {
+    	if (params.active == true) {
     		App.vp.setActiveItem(v);
     	}
     	

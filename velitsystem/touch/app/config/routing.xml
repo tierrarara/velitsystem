@@ -10,6 +10,10 @@
 			<!-- default action for "/" -->
 			<route name="index" pattern="^/$" module="%actions.default_module%" action="%actions.default_action%" output_type="html" />
 
+			<!-- Desktop -->
+			<route name="customer" pattern="^/Customer" module="Customer">
+				<route name=".list" pattern="/List(/{day:\d+})?$" action="List" />
+			</route>
 
 			<!-- Desktop -->
 			<route name="desktop" pattern="^/Desktop" module="Desktop">
