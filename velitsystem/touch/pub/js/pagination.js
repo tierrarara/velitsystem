@@ -22,7 +22,7 @@ var list = new Ext.Application({
 			idProperty: 'id',
 			proxy: {
 				type: 'ajax',
-				url : '/test/paginations',
+				url : 'test/paginations',
 				reader: {
 					root: 'data',
 					idProperty: 'id'// , totalProperty: 'total'
@@ -67,5 +67,60 @@ var list = new Ext.Application({
 /*
  * command test on console
  * 
- * 
+ * multiple form panel in one panel
+Ext.setup({
+    icon: 'icon.png',
+    tabletStartupScreen: 'tablet_startup.png',
+    phoneStartupScreen: 'phone_startup.png',
+    glossOnIcon: false,
+    onReady: function(){
+    
+        var formBase = {
+            scroll: 'vertical',
+            height: 385,
+            width: 480,
+            items: [{
+                xtype: 'fieldset',
+                title: 'Personal Info',
+                instructions: 'Please enter the information above.',
+                defaults: {
+                    required: true,
+                    labelAlign: 'left'
+                },
+                items: [{
+                    xtype: 'textfield',
+                    name: 'name',
+                    label: 'Name'
+                }, {
+                    xtype: 'passwordfield',
+                    name: 'password',
+                    label: 'Password'
+                }, {
+                    xtype: 'textfield',
+                    name: 'disabled',
+                    label: 'Disabled',
+                    disabled: true
+                }]
+            }]
+        };
+        
+        var ct = new Ext.Container({
+            layout: 'hbox',
+            fullscreen: true,
+            items: [new Ext.form.FormPanel(formBase), new Ext.form.FormPanel(formBase)]
+        });
+        
+        ct.items.each(function(form){
+            form.addClass('x-floating');
+            delete form.lastSize;
+            form.doComponentLayout(form.width, form.height);
+            form.el.setStyle('position', 'relative !important');
+        });
+    }
+});
+
+
+
+
+
  */
