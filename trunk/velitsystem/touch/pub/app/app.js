@@ -11,9 +11,10 @@ App = new Ext.Application({
 	
     name: "App",
     started: false,
-    config: null,
+    config: undefined,
     baseUrl: '/', // TODO: cargar desde la configuracion inicial
-    user: {},
+    user: undefined,
+    defaultUrl   : 'Desktop/Index',
 
     launch: function() {
     	
@@ -29,11 +30,11 @@ App = new Ext.Application({
 			
 			// TODO: load config
 			// si carga un hash del url no deberia ejecutar esta sentencia
-			Ext.dispatch({
-				controller: 'Desktop',
-				action    : 'Index',
-				historyUrl: 'Desktop/Index'
-			}); // dispatch default screen
+//			Ext.dispatch({
+//				controller: 'Desktop',
+//				action    : 'Index',
+//				historyUrl: 'Desktop/Index'
+//			}); // dispatch default screen
 			
     	}catch (e) {
     		
@@ -113,7 +114,7 @@ App = new Ext.Application({
     		
     		callback: function (opts,success,request) {
     			console.debug('ajax - callback ');
-    			
+
     			if (!success) {// cambiar estas sentencias, el servidor puede 
     				// devolver status: 200 y success : false
     				Ext.Msg.confirm('Warning', 'Try Again?', function (btn,value,opt) {
@@ -258,5 +259,8 @@ App = new Ext.Application({
 
 
 Ext.Router.draw(function(map) { console.debug('Ext.Router.draw');
+	map.connect('Desktop/Index', {controller: 'Desktop', action: 'Index'});
+
+	map.connect('Customer/SelectDay/:day', {controller: 'Customer', action: 'SelectDay'});
     map.connect(':controller/:action');
 });
