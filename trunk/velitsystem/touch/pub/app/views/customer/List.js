@@ -5,7 +5,7 @@
  * @subpackage View
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
- * @version    $Id$
+ * @version    $Id: List.js 152 2011-08-19 15:58:03Z tierrarara@gmail.com $
  */
 
 
