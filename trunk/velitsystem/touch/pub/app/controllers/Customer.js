@@ -12,7 +12,7 @@ Ext.regController('Customer', {
 	List : function(params) {
 		console.debug('Customer / List');
 		App.addView({
-			viewName: 'CustomerAttention'
+			viewName: 'CustomerList'
 		});
 	},
 	SelectDay : function(params) {
