@@ -1,1 +1,7 @@
-<?php echo $t['_writter']?>
+<?php 
+// echo $t['_writter'];
+
+
+echo 'action: '.$t['action']. '-';
+
+?>
