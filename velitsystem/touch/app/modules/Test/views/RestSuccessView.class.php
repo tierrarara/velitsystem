@@ -2,6 +2,12 @@
 
 class Test_RestSuccessView extends AppTestBaseView {
 	
+	public function executeHtml(AgaviRequestDataHolder $rd) {
+		$this->setupHtml ( $rd );
+	
+	}
+	
+	
 	public function executeJson(AgaviRequestDataHolder $rd) {
 		$this->setupHtml ( $rd );
 		
