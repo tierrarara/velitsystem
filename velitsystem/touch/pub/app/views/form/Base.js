@@ -54,4 +54,4 @@ App.views.FormBase = Ext.extend(Ext.form.FormPanel, {
 	 
 });
 
-//Ext.reg('App.views.FormBase', App.views.FormBase);
+Ext.reg('App.views.FormBase', App.views.FormBase);
