@@ -30,6 +30,7 @@
 				<route name=".index" pattern="/index" action="Index" />
 				<route name=".rest" pattern="/rest" action="Rest" />
 				<route name=".pagination" pattern="/paginations" action="Pagination" />
+				<route name=".model" pattern="/model" action="Model" />
 			</route>
 			
 			
