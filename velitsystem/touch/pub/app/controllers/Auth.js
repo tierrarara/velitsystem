@@ -83,7 +83,7 @@ Ext.regController('Auth', {
 	logOut: function (params) {
 		// TODO: colocar una funcion success a App.rq como parametro
 		// para marcar como no autenticado cuando no se pueda hacer el request
-		App.user.isAuthenticate = false;
+		//App.user.isAuthenticate = false;
 		
 		Ext.getCmp('btn-logout').hide('fade');
 		

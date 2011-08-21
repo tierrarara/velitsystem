@@ -13,9 +13,11 @@ App.views.CustomerAttention = Ext.extend(Ext.TabPanel, {
 	initComponent : function() {
 
 		var config = {
+
+			id: 'CustomerAttention',
 			tabBar : {
 				dock : 'bottom',
-				ui : 'light',
+				//ui : 'light',
 				layout : {
 					pack : 'center'
 				}
@@ -26,7 +28,22 @@ App.views.CustomerAttention = Ext.extend(Ext.TabPanel, {
 			},
 			defaults : {
 				scroll : 'vertical'
-			}
+			},
+			
+			items: [{
+				iconCls: 'bookmarks',
+		        title: 'Bookmarks',
+		        html: 'texto del bookmarks',
+		        badgeText: 'badgeText'
+		    },{
+				iconCls: 'bulb-ux',
+		        title: 'Bookmarks',
+		        html: 'texto del bulb'
+		    },{
+				iconCls: 'loop-ux',
+		        title: 'Product Exchange',
+		        html: 'texto del bulb'
+		    }]
 		};
 
 		Ext.apply(this, config);
