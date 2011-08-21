@@ -145,6 +145,9 @@ App = new Ext.Application({
 		   					
 
 	    				}else {
+	    					// TODO: Definir las acciones cuando solo son datos
+	    					// tal vez esto no sea necesario las solicitudes
+	    					// de los store solo traen data
 	    					throw "Dispatch or View is not define";
 	    				}
     				
@@ -176,63 +179,47 @@ App = new Ext.Application({
         }); // dispatch default screen
     },
     
+    /**
+     * config:
+     * 
+     * 	viewName: -> xtype of view 
+     *  active : -> show view, default true
+     *  target: -> id target container, default viewport,
+     *  onfig: -> config view
+     * 
+     * 
+     * @param config object
+     */
     addView: function (params) {
 
     	// TODO: registrar las vistas que se van cargando para ir limpiando el cache
-    	if (params.active == undefined) {
-    		params.active = true;
-    	}
+    	
+    	var active = params.active || true,
+    	target = Ext.getCmp(params.target) || App.vp,
+    	config = params.config || {};
     	
     	
-    	var v = App.vp.items.get(params.viewName)
+    	// TODOL revisar eso
+    	var v = target.items.get(params.viewName)
 		
 		if (!v) {
 			// creo la vista si no existe
-			v = new App.views[params.viewName]();
+			v = new App.views[params.viewName](config);
 			
-			App.vp.add(v);
+			target.add(v);
+			
+		}else if (config) {
+			
 		}
     	
-    	if (params.active == true) {
-    		App.vp.setActiveItem(v);
+    	if (active == true) {
+    		target.setActiveItem(v);
     	}
     	
     	return v;
     	// var direction = (target === 'usersList') ? 'right' : 'left';
     	// this.setActiveItem(App.views[target], { type: 'slide', direction: direction }
     	
-    },
-    
-    /**
-     * Se ejecuta cuando termina la solicitud si success = true
-     * luego es llamado el callback
-     * @param request
-     * @param opts
-     */
-    globalSuccessRqHandler: function (request,opts) {
-    	// TODO: definir funcion
-    },
-    
-    /**
-     * Se ejecuta cuando termina la solicitud si success = false
-     * O si responseStatus != 200
-     * luego es llamado el callback
-     * @param request
-     * @param opts
-     */
-    globalFailureRqHandler: function (request,opts) {
-    	// TODO: definir funcion
-    },
-    
-    /**
-     * esta funcion se ejecuta despues de success o despues de failure,
-     * siempre se ejecuta
-     * @param opts
-     * @param success
-     * @param request
-     */
-    globalCallbackRqHandler: function (opts,success,request) {
-    	// TODO: definir funcion
     },
     
     /**
@@ -253,7 +240,7 @@ App = new Ext.Application({
      */
     globalFailureSubmitqHandler: function (form, result, responseText) {
     	// TODO: definir funcion
-    },
+    }
     
 });
 
@@ -261,6 +248,12 @@ App = new Ext.Application({
 Ext.Router.draw(function(map) { console.debug('Ext.Router.draw');
 	map.connect('Desktop/Index', {controller: 'Desktop', action: 'Index'});
 
-	map.connect('Customer/SelectDay/:day', {controller: 'Customer', action: 'SelectDay'});
+	map.connect('Customer/List/:day', {controller: 'Customer', action: 'List'});
+	
+	map.connect('Customer/SelectDay/:day', {controller: 'Customer', action: 'List'});
+	
+	
+	map.connect('Customer/Attention/:customerId', {controller: 'Customer', action: 'Attention'});
+	
     map.connect(':controller/:action');
 });

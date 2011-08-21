@@ -28,6 +28,7 @@ App.views.Viewport = Ext.extend(Ext.Panel, {
     	
     	
         Ext.apply(this, {
+        	id: 'ViewPort',
         	// top bar global
         	dockedItems: [{
         		xtype: 'toolbar',

@@ -12,21 +12,6 @@
 App.views.CustomerList = Ext.extend(Ext.Panel, {
 	
 	initComponent: function(){
-
-		// TODO: deberia existir un objeto global Date
-		var date = new Date();
-			
-		// Objeto para cargar la data definida en la vista de Customer
-		var Store = new Ext.data.Store({
-			model:'Customer',
-			clearOnPageLoad: true,
-			remoteFilter: true,
-			autoLoad: true,
-			filters: [{
-				property: 'day',
-				value   : date.getDay()
-			}]
-		});
 		
 		Ext.apply(this, {
 			id: 'CustomerList',
@@ -36,11 +21,24 @@ App.views.CustomerList = Ext.extend(Ext.Panel, {
 			items:[{
 				id: 'Customer-List',
 				xtype:'list',
-				store: Store,
+				store: App.stores.Customer,
 				
 				grouped: false,
 				itemTpl:'<div class="thumb-wrap">{name} - <small>{address1}</small></div>',
-				onItemDisclosure: true
+				//onItemDisclosure: true,
+				
+				listeners: {
+					itemtap: function ( list, index, item, e ) {
+						var r = list.getStore().getAt(index);
+
+						Ext.dispatch({
+							controller: 'Customer',
+							action: 'Attention',
+							record: r,
+							historyUrl: 'Customer/Attention/' +r.getId()
+						});
+					}
+				}
 			}],
 			
 			// botones
@@ -53,43 +51,43 @@ App.views.CustomerList = Ext.extend(Ext.Panel, {
 					items:[{
 						xtype:'button',
 						text:'Mo',
-						pressed: 1 == date.getDay(),
+						pressed: 1 == this.day,
 						keyDay:1
 					},
 					{
 						xtype:'button',
 						text:'Tu',
-						pressed: 2 == date.getDay(),
+						pressed: 2 == this.day,
 						keyDay:2
 					},
 					{
 						xtype:'button',
 						text:'We',
-						pressed: 3 == date.getDay(),
+						pressed: 3 == this.day,
 						keyDay:3
 					},
 					{
 						xtype:'button',
 						text:'Th',
-						pressed: 4 == date.getDay(),
+						pressed: 4 == this.day,
 						keyDay:4
 					},
 					{
 						xtype:'button',
 						text:'Fr',
-						pressed: 5 == date.getDay(),
+						pressed: 5 == this.day,
 						keyDay:5
 					},
 					{
 						xtype:'button',
 						text:'Sa',
-						pressed: 6 == date.getDay(),
+						pressed: 6 == this.day,
 						keyDay:6
 					},
 					{
 						xtype:'button',
 						text:'Su',
-						pressed: 0 == date.getDay(),
+						pressed: 0 == this.day,
 						keyDay:0
 					}],
 					listeners: {
@@ -129,10 +127,10 @@ App.views.CustomerList = Ext.extend(Ext.Panel, {
 		
 		Ext.dispatch({
 			controller:'Customer',
-			action:'SelectDay',
+			action:'List',
 			day: keyDay,
 			store: Ext.getCmp('Customer-List').getStore(),
-			historyUrl: 'Customer/SelectDay/'+keyDay
+			historyUrl: 'Customer/List/'+keyDay
 		});
 	}
 	
