@@ -41,6 +41,8 @@ Ext.regController('Customer', {
 		
 		var customerId = params.customerId || 0;
 		
+		var store = Ext.getStore('CustomerStore');
+		
 		var v = App.addView({
 			viewName: 'CustomerAttention',
 			active: true,
@@ -49,7 +51,7 @@ Ext.regController('Customer', {
 		
 		// agrego a la vista de detalle el cliente seleccionado
 		if (customerId) { 
-			Ext.getCmp('CustomerDetail').update(params.record.data);
+			Ext.getCmp('CustomerDetail').update(store.getById(customerId));
 		}
 		
 	}
