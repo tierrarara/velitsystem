@@ -15,8 +15,6 @@ App.views.CustomerDetail = Ext.extend(Ext.TabPanel, {
 	
 	initComponent : function() {
 
-		console.log('initComponent');
-		
 		var config = {
 				iconCls: 'info',
 				tpl: '<div> Name: {name}</div><br /><div>Address {address1}</div>'

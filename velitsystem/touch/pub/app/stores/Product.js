@@ -8,9 +8,9 @@
  * @version $Id$
  */
 
-App.stores.Customer = new App.data.Store({
-	id: 'CustomerStore',
-	model : 'Customer',
+App.stores.Product = new App.data.Store({
+	id: 'ProductStore',
+	model : 'Product',
 	clearOnPageLoad : true,
 	remoteFilter : true,
 	autoLoad : false

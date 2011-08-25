@@ -30,16 +30,8 @@ App.views.CustomerAttention = Ext.extend(Ext.TabPanel, {
 				scroll : 'vertical'
 			},
 			
-			items: [{
-				iconCls: 'bookmarks',
-		        title: 'Bookmarks',
-		        html: 'texto del bookmarks',
-		        badgeText: 'badgeText'
-		    },{
-				iconCls: 'bulb-ux',
-		        title: 'Bookmarks',
-		        html: 'texto del bulb'
-		    },{
+			items: [new App.views.CustomerDetail(),
+			        new App.views.ProductsOrder(),{
 				iconCls: 'loop-ux',
 		        title: 'Product Exchange',
 		        html: 'texto del bulb'
