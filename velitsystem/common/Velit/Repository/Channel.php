@@ -10,11 +10,11 @@
  * @version    $Id$
  */
 
-class Velit_Repository_Product extends Zend_Db_Table {
+class Velit_Repository_Channel extends Zend_Db_Table {
 	
-	protected $_name = 'product';
+	protected $_name = 'channel';
 	
-	protected $_rowClass = 'Velit_Model_Product';
+	protected $_rowClass = 'Velit_Model_Channel';
 	
 	protected $_referenceMap = array (
 			'Company' => array (
