@@ -1,20 +1,18 @@
 <?php
+
 /**
- * 
- * Escribe la respuesta de la solicitud en formato Html
  * 
  * @category   Velit
  * @author     Rafael Guerrero <tierrarara@gmail.com>
- * @package    Velit_Response
+ * @package    Repository
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
  * @version    $Id$
  */
 
-class Velit_Writter_Html extends Velit_Writter {
+class Velit_Repository_Product_Category extends Zend_Db_Table {
 
-	public function __toString(){
-		return 'Definir la funcion';
-	}
+	protected $_name = 'product_category';
 	
+	protected $_rowClass = 'Velit_Model_Product_Category';
 }

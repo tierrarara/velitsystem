@@ -1,20 +1,15 @@
 <?php
+
 /**
- * 
- * Escribe la respuesta de la solicitud en formato Html
  * 
  * @category   Velit
  * @author     Rafael Guerrero <tierrarara@gmail.com>
- * @package    Velit_Response
+ * @package    Model
  * @copyright  Copyright (c) 2011 Velit System (http://www.velitsystem.com)
  * @license    http://www.velitsystem.com/licence
  * @version    $Id$
  */
 
-class Velit_Writter_Html extends Velit_Writter {
+class Velit_Model_Country extends Zend_Db_Table_Row {
 
-	public function __toString(){
-		return 'Definir la funcion';
-	}
-	
 }
