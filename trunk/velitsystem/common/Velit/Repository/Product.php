@@ -21,6 +21,11 @@ class Velit_Repository_Product extends Zend_Db_Table {
 					'columns' => '_dex_row_company_id', 
 					'refTableClass' => 'Velit_Repository_Company', 
 					'refColumns' => '_dex_row_company_id' 
+			),
+			'Category' => array (
+					'columns' => '_dex_row_product_category_id', 
+					'refTableClass' => 'Velit_Repository_Product_Category', 
+					'refColumns' => '_dex_row_product_category_id' 
 			) 
 	);
 }
