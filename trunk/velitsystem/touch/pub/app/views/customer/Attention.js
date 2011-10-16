@@ -31,7 +31,7 @@ App.views.CustomerAttention = Ext.extend(Ext.TabPanel, {
 			},
 			
 			items: [new App.views.CustomerDetail(),
-			        new App.views.ProductsOrder(),{
+			        /*new App.views.ProductsOrder(),*/{
 				iconCls: 'loop-ux',
 		        title: 'Product Exchange',
 		        html: 'texto del bulb'
