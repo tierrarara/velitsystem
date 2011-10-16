@@ -11,7 +11,7 @@
 Ext.ns('App.util', 'App.data');
 
 // manejo de los eventos asyncronos
-// por ahora solo para las solicitudes del store
+// no utilizado
 App.util.Proxy = {
 	callback: function (records, operation, success) {
 		try {
@@ -24,6 +24,7 @@ App.util.Proxy = {
 				Ext.dispatch(response.dispatch);
 					
 			}
+			
 		}catch (ex) {
 			App.handleError(ex);
 		}
@@ -49,10 +50,33 @@ App.data.Store = Ext.extend(Ext.data.Store, {
 		
 		options = options || {};
 		
+		if (Ext.isFunction(options.callback)) {
+			this._tsuccess = options.callback;
+		}
+		
 		Ext.apply(options, {
-			callback: App.util.Proxy.callback,
-			success: App.util.Proxy.success,
-			failure: App.util.Proxy.ailure
+			callback: function (records, operation, success) {
+				try {
+					var response = Ext.decode(operation.response.responseText);
+					
+					if (response.dispatch && response.dispatch.controller) {
+						// pasar la data al controlador
+						response.dispatch.data = response;
+						
+						Ext.dispatch(response.dispatch);
+							
+					}
+					
+					if (this._tsuccess) { 
+						this._tsuccess(records, operation, success);
+					
+						delete(this._tsuccess);
+					}
+					
+				}catch (ex) {
+					App.handleError(ex);
+				}
+			}
 		});
 		
 		App.data.Store.superclass.load.call(this, options);
