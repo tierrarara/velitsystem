@@ -34,7 +34,7 @@ App.views.CustomerList = Ext.extend(Ext.Panel, {
 						Ext.dispatch({
 							controller: 'Customer',
 							action: 'Attention',
-							record: r,
+							customerId: r.getId(),
 							historyUrl: 'Customer/Attention/' +r.getId()
 						});
 					}
