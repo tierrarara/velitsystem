@@ -39,7 +39,7 @@ Ext.regController('Customer', {
 	// atender cliente
 	Attention: function (params) {
 		
-		var customerId = params.customerId || 0;
+		var customerId = parseInt(params.customerId) || 0;
 		
 		var store = Ext.getStore('CustomerStore');
 		
@@ -48,10 +48,33 @@ Ext.regController('Customer', {
 			active: true,
 			config: { customer: customerId }
 		});
-		
+		console.log('customer id' + customerId);
 		// agrego a la vista de detalle el cliente seleccionado
-		if (customerId) { 
-			Ext.getCmp('CustomerDetail').update(store.getById(customerId));
+		if (customerId) {
+			// TODO: tal vez es preferible que algunas pantallas no pueden ser cargadas directamente
+			// aunque es mejor para la experiencia del cliente que si se pueda
+			if (store.getCount() < 1) { // si el store no ha sido cargado
+				
+				store._tsuccess = function (){
+
+					Ext.getCmp('CustomerDetail').update( store.getById(customerId).data);
+				};
+				// autoload on filter
+				store.clearFilter();
+				// cargar el store con el cliente seleccionado
+				store.filter('_dex_row_customer_id', customerId);
+
+//				store.load({scope: store,callback: function () {
+//					console.log('customer success');
+//					var record = store.getById(customerId);
+//					Ext.getCmp('CustomerDetail').update(record.data);
+//					
+//				}});
+			}else {
+				
+				Ext.getCmp('CustomerDetail').update(store.getById(customerId).data);
+			
+			}
 		}
 		
 	}
